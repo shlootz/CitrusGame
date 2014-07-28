@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="FlashSocket.IO_0.7.0-Alpha" type="flex">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/FlashSocket.IO_0.7.0-Alpha.swc!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,14 +1,14 @@
 var net = require('net');
-var mySockets = {}
+var mySockets = {};
 
 // create the server and register event listeners
 var server = net.createServer(function(socket) {
-                                socket.on("connect", function(){
+                                socket.on("connect", function(socket){
                                     console.log("Connected to Flash");
                                 });
-                                socket.on("disconnect", function(socket)
+                                socket.on("disconnect", function()
                                 {
-                                    console.log("aaaaa");
+                                    console.log("client disconnected");
                                 })
                                 socket.on("timeout", function()
                                 {
@@ -19,6 +19,7 @@ var server = net.createServer(function(socket) {
                                     // Parse the answer from client
                                     var answer = new Object();
                                     var data = new Object();
+
                                     var nName = "";
                                     var type = "";
                                     var message = "";
@@ -34,26 +35,37 @@ var server = net.createServer(function(socket) {
                                     type = data["type"];
                                     message = data["msg"]
 
-                                    if(type == "connecting") {
+                                    if(message == "connecting") {
                                         mySockets[nName] = {
-                                            socket: socket
+                                            socket: socket,
+                                            type: type
                                         }
 
-                                        console.log(nName + " just connected");
+                                        console.log(nName +" of race "+type+ " just connected");
 
-                                        socket.setTimeout(1000)
+                                        socket.setTimeout(2000)
 
                                     }
                                     else {
-                                        genericData(socket);
+                                        var receivedObject = data["obj"];
+                                        genericData(socket, receivedObject);
                                     }
                                 })
                               });
 
 // When flash sends us data, this method will handle it
-function genericData(socket)
+function genericData(socket, obj)
 {
     console.log('again');
+
+    var data = new Object();
+    for (x in obj)
+    {
+        data[String(x)] = obj[x];
+    }
+
+    console.log(data["produced"])
+
     socket.write("Hello")
 }
 

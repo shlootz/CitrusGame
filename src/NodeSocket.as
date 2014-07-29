@@ -16,13 +16,15 @@
           private var _serverUrl:String;
           private var _port:int;
 		  private var _nickName:String;
+          private var _key:String;
 
           private var _onConnectCallback:Function;
  
-          public function NodeSocket(url:String, port:int, nickName:String):void {
+          public function NodeSocket(url:String, port:int, nickName:String, key:String):void {
                this._serverUrl = url;
                this._port = port;
 			   this._nickName = nickName;
+               this._key = key;
           }
  
           public function connect(callBack:Function):void
@@ -44,7 +46,7 @@
           private function onSocketConnect(e:Event):void
           {
                trace("Connected");
-			   var objToJson = {"nickName":_nickName, "msg":"connectionName", type:"connecting"};
+			   var objToJson = {"nickName":_nickName, "msg":"connecting", "type":_key};
 			  _socket.writeUTFBytes(JSON.stringify(objToJson));
               _socket.flush();
 
@@ -85,19 +87,26 @@
                 }
           }
  
-          public function writeMessage(message:String, type:String=""):void
+          public function writeMessage(message:String, type:String="", obj:Object = null):void
           {
 			  
 			  var objToJson = {
 				  "nickName":_nickName, 
 				  "msg":message,
-                  "type":type
+                  "type":type,
+                  "obj":obj
 				  };
 				  
 			   trace("Sending : "+objToJson);	 
-				 
-			  _socket.writeUTFBytes(JSON.stringify(objToJson));
-              _socket.flush();
+
+              try {
+                  _socket.writeUTFBytes(JSON.stringify(objToJson));
+                  _socket.flush();
+              } catch (e:Error)
+              {
+                  trace("Server crashed, cleaning socket");
+                  disconnectSocket();
+              }
           }
  
           private function disconnectSocket():void

@@ -3,6 +3,8 @@ package {
 import com.pnwrain.flashsocket.FlashSocket;
 import com.pnwrain.flashsocket.events.FlashSocketEvent;
 
+import facebook.FacebookConnect;
+
 import flash.display.Sprite;
 import flash.events.DataEvent;
 import flash.events.Event;
@@ -33,11 +35,20 @@ public class Main extends Sprite {
     private var _consumer:Producer = new Producer("Consumer", 400, 200, 10, 7, 1);
     private var _strategy:Strategy = new Strategy();
 
+    private var _facebook:FacebookConnect;
+
     public function Main() {
         var textField:TextField = new TextField();
         textField.text = "Hello, World Citrus Game";
         addChild(textField);
 
+        _facebook = new FacebookConnect();
+        addChild(_facebook)
+        _facebook.init();
+    }
+
+    private function init():void
+    {
         _nodeSocket.connect(socketConnected, onDataReceived);
 
         _strategy.makeNewLinkage(_resourceGathering, _transporter, _consumer);

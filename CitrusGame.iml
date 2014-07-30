@@ -14,6 +14,15 @@
             <entry library-name="FlashSocket.IO_0.7.0-Alpha" library-level="project">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-name="Flox-AS3" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="GraphAPI_Desktop_1_8_1" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="AirFacebook" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="AIRSDK_Compiler" />
         </dependencies>
@@ -35,6 +44,9 @@
     <orderEntry type="library" exported="" name="as3corelib" level="project" />
     <orderEntry type="library" exported="" name="support" level="project" />
     <orderEntry type="library" exported="" name="FlashSocket.IO_0.7.0-Alpha" level="project" />
+    <orderEntry type="library" exported="" name="Flox-AS3" level="project" />
+    <orderEntry type="library" exported="" name="GraphAPI_Desktop_1_8_1" level="project" />
+    <orderEntry type="library" exported="" name="AirFacebook" level="project" />
   </component>
 </module>
 

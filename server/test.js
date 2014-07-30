@@ -20,9 +20,9 @@ const TYPE_PRODUCER = "producer";
 const TYPE_TRANSPORTER = "transporter";
 
 //Game related
-var miners = 1000;
-var producers = 500;
-var transporters = 400;
+var miners = 0;
+var producers = 0;
+var transporters = 0;
 
 // create the server and register event listeners
 var server = net.createServer(function(socket) {
@@ -67,7 +67,7 @@ var server = net.createServer(function(socket) {
                                         updateTypesCounts(type);
                                         console.log(nName +" of race "+type+ " just connected");
 
-                                        socket.setTimeout(2000)
+                                        socket.setTimeout(3000)
 
                                     }
                                     else {

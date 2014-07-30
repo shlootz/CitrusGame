@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Flox-AS3" type="flex">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/Flox-AS3.swc!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

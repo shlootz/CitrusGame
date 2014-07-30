@@ -6,7 +6,7 @@ public class BasicSimulation {
 
     protected var _name:String = "";
     protected var _workers:uint = 0;
-    protected var _resources:Number = 0;
+    protected var _resources:Number = 1000;
 
     public function BasicSimulation(name:String, workers:Number, resoures:Number) {
         _name = name;

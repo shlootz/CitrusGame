@@ -38,9 +38,10 @@ public class Main extends Sprite {
         textField.text = "Hello, World Citrus Game";
         addChild(textField);
 
-        _nodeSocket.connect(socketConnected);
+        _nodeSocket.connect(socketConnected, onDataReceived);
 
         _strategy.makeNewLinkage(_resourceGathering, _transporter, _consumer);
+        _strategy.makeNewLinkage(_resourceGathering, null, _transporter);
 
         _timer.addListenerToTimer(feedServer);
         _timer.addListenerToTimer(_strategy.step);
@@ -50,6 +51,13 @@ public class Main extends Sprite {
     private function socketConnected():void
     {
         _nodeSocket.writeMessage("test");
+    }
+
+    private function onDataReceived(obj:Object):void
+    {
+        _resourceGathering.workers = obj["data"]["miners"];
+        _transporter.workers = obj["data"]["transporters"];
+        _consumer.workers = obj["data"]["producers"];
     }
 
     private function feedServer():void

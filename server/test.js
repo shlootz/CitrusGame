@@ -1,21 +1,44 @@
+//Connection variables
 var net = require('net');
 var mySockets = {};
 
+//Socket events
+const NICK_NAME = "nickName";
+const PLAYER_TYPE = "type";
+const MESSAGE = "msg";
+const EVENT_DATA_RECEIVED = "data";
+const EVENT_CONNECT = "connect";
+const EVENT_DISCONNECT = "disconnect";
+const EVENT_TIMEOUT = "timeout";
+
+//Client messages
+const CLIENT_CONNECTING = "connecting";
+
+//Client consts
+const TYPE_MINER = "miner";
+const TYPE_PRODUCER = "producer";
+const TYPE_TRANSPORTER = "transporter";
+
+//Game related
+var miners = 1000;
+var producers = 500;
+var transporters = 400;
+
 // create the server and register event listeners
 var server = net.createServer(function(socket) {
-                                socket.on("connect", function(socket){
+                                socket.on(EVENT_CONNECT, function(socket){
                                     console.log("Connected to Flash");
                                 });
-                                socket.on("disconnect", function()
+                                socket.on(EVENT_DISCONNECT, function()
                                 {
                                     console.log("client disconnected");
                                 })
-                                socket.on("timeout", function()
+                                socket.on(EVENT_TIMEOUT, function()
                                 {
                                    console.log("timeout");
                                    socket.end();
                                 })
-                                socket.on("data", function(d){
+                                socket.on(EVENT_DATA_RECEIVED, function(d){
                                     // Parse the answer from client
                                     var answer = new Object();
                                     var data = new Object();
@@ -31,16 +54,17 @@ var server = net.createServer(function(socket) {
                                         data[String(x)] = answer[x];
                                     }
 
-                                    nName =  data["nickName"];
-                                    type = data["type"];
-                                    message = data["msg"]
+                                    nName =  data[NICK_NAME];
+                                    type = data[PLAYER_TYPE];
+                                    message = data[MESSAGE]
 
-                                    if(message == "connecting") {
+                                    if(message == CLIENT_CONNECTING) {
                                         mySockets[nName] = {
                                             socket: socket,
                                             type: type
                                         }
 
+                                        updateTypesCounts(type);
                                         console.log(nName +" of race "+type+ " just connected");
 
                                         socket.setTimeout(2000)
@@ -56,8 +80,6 @@ var server = net.createServer(function(socket) {
 // When flash sends us data, this method will handle it
 function genericData(socket, obj)
 {
-    console.log('again');
-
     var data = new Object();
     for (x in obj)
     {
@@ -66,7 +88,43 @@ function genericData(socket, obj)
 
     console.log(data["produced"])
 
-    socket.write("Hello")
+    updateClient(socket);
+}
+
+function updateClient(socket)
+{
+    var data = {
+        "miners":miners,
+        "transporters":transporters,
+        "producers":producers
+    }
+    var response = {
+        "type":"updatePlayers",
+        "data":data
+    }
+    socket.write(JSON.stringify(response));
+}
+
+// On each connect, the type is checked and the numbers are updated
+function updateTypesCounts(type)
+{
+   if(type == TYPE_MINER)
+   {
+       miners ++;
+       console.log("Miners :"+miners);
+   }
+
+    if(type == TYPE_TRANSPORTER)
+    {
+        transporters ++;
+        console.log("Transporters :"+transporters);
+    }
+
+    if(type == TYPE_PRODUCER)
+    {
+        producers ++;
+        console.log("Producers :"+producers);
+    }
 }
 
 // listen for connections

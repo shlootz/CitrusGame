@@ -19,6 +19,7 @@
           private var _key:String;
 
           private var _onConnectCallback:Function;
+          private var _onDataReceivedCallback:Function;
  
           public function NodeSocket(url:String, port:int, nickName:String, key:String):void {
                this._serverUrl = url;
@@ -27,9 +28,10 @@
                this._key = key;
           }
  
-          public function connect(callBack:Function):void
+          public function connect(callBack:Function, onDataCallback:Function):void
           {
               _onConnectCallback = callBack;
+              _onDataReceivedCallback = onDataCallback;
 
                cleanUpSocket();
  
@@ -85,6 +87,8 @@
                {
                     _beenVerified = true;
                 }
+
+              _onDataReceivedCallback.apply("Received",[JSON.parse(message)])
           }
  
           public function writeMessage(message:String, type:String="", obj:Object = null):void

@@ -17,9 +17,6 @@
             <entry library-name="Flox-AS3" library-level="project">
               <dependency linkage="Merged" />
             </entry>
-            <entry library-name="GraphAPI_Desktop_1_8_1" library-level="project">
-              <dependency linkage="Merged" />
-            </entry>
             <entry library-name="AirFacebook" library-level="project">
               <dependency linkage="Merged" />
             </entry>

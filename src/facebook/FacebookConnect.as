@@ -8,10 +8,13 @@ import flash.display.BitmapData;
 import flash.display.Loader;
 
 import flash.display.Stage;
+import flash.events.Event;
+import flash.events.IOErrorEvent;
 
 import flash.events.StatusEvent;
 import flash.geom.Rectangle;
 import flash.media.StageWebView;
+import flash.net.URLRequest;
 import flash.utils.ByteArray;
 
 public class FacebookConnect {
@@ -64,46 +67,39 @@ public class FacebookConnect {
         if(success)
         {
             trace(success);
-            FacebookMobile.api("/me/friends",onApiCallFriends);
-            FacebookMobile.api("/me/picture", onMyPicReceived)
+            loadProfileImage();
+            //var imageUrl:String = FacebookMobile.getImageUrl(success.user.id);
         }
     }
 
-    private function onMyPicReceived(success:Object, fail:Object){
-        var byteArray:ByteArray;
-        var bmpData:BitmapData
-        if(success)
-        {
-            trace(success);
-            byteArray = success as ByteArray;
-            bmpData = ByteArray as BitmapData;
-
-            var loader:Loader = new Loader();
-            loader.loadBytes(byteArray);
-            bmpData.draw(loader);
-
-            _stage.addChild(new Bitmap(bmpData));
-        }
-        else
-        {
-            trace("Pic Error "+fail);
-            byteArray = fail as ByteArray;
-            bmpData = ByteArray as BitmapData;
-            _stage.addChild(new Bitmap(bmpData));
-        }
-    }
-
-    private function onApiCallFriends(success:Object, fail:Object):void
+    private function loadProfileImage():void
     {
-        if (success)
-        {
-            var friends:Array = success as Array;
-            trace("Friends:"+friends);
-        }
-        else
-        {
-            trace("Friends Error "+fail);
-        }
+        FacebookMobile.api("/me/picture?redirect=false", function(obj1:Object, obj2:Object){
+            trace(obj1);
+            trace(obj2);
+        });
+       // var loader:Loader = new Loader();
+       // loader.load(new URLRequest(imageUrl));
+
+       // loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,loadingError);
+       // loader.contentLoaderInfo.addEventListener(Event.COMPLETE,doneLoad);
+    }
+
+    private function doneLoad(e:Event):void
+    {
+        var bm:Bitmap = e.target.content as Bitmap;
+        bm.smoothing = true;
+        bm.x = 10;
+        bm.y = 10;
+        bm.width = 80;
+        bm.height = 80;
+
+        _stage.addChild(bm);
+    }
+
+    private function loadingError(e:IOErrorEvent):void
+    {
+
     }
 
         private function onLogin(success:Object,fail:Object):void

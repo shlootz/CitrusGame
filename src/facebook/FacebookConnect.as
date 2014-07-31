@@ -22,7 +22,7 @@ public class FacebookConnect {
 		public function init():void {
             trace("Facebook.isSupported "+Facebook.isSupported);
 
-            FacebookMobile.init(APP_ID, facebookInited)
+            FacebookMobile.init(APP_ID, facebookInited, "CAAT1TfgbqVcBAEJfdKO2nmpFJbjVTNt1x9P5Bqj7zmVDk9jZB6jy8WGDmXumFZBHKsGZABQVkISuUSCaLWy9zu7wgfAi8LdDMowWi5LmtStUtNk96ilKQmaZCkZBCZApUtbJxC4tbAmDsqJ2biEDtAELwpyJF8M7ayxmdZBd0AhZC5SLQCB5ClYtGf47YO5juqaObe78tlklwX3N3Lpd074S")
 
            /* if (Facebook.isSupported) {
                 _facebook = Facebook.getInstance();
@@ -55,6 +55,7 @@ public class FacebookConnect {
         {
             if(success)
             {
+                trace(FacebookMobile.getSession().accessToken);
                 trace('facebook connected');
             } else {
                 trace('facebook error');

@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e851299-2b18-4f09-8bb0-5ebe63af7e47" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/GraphAPI_Mobile_1_8_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Main-app.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/GraphAPI_Desktop_1_8_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CitrusGame.iml" afterPath="$PROJECT_DIR$/CitrusGame.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/facebook/FacebookConnect.as" afterPath="$PROJECT_DIR$/src/facebook/FacebookConnect.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.as" afterPath="$PROJECT_DIR$/src/Main.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CitrusGame.iws" />
@@ -56,8 +51,8 @@
       <file leaf-file-name="FacebookConnect.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/facebook/FacebookConnect.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.20418848" vertical-offset="567" max-vertical-offset="1245">
-              <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.5968586" vertical-offset="132" max-vertical-offset="1260">
+              <caret line="24" column="274" selection-start-line="24" selection-start-column="274" selection-end-line="24" selection-end-column="274" />
               <folding>
                 <element signature="e#18#59#0" expanded="true" />
               </folding>
@@ -725,12 +720,12 @@
       <workItem from="1406732751335" duration="1434000" />
       <workItem from="1406736382887" duration="4572000" />
       <workItem from="1406747430596" duration="2372000" />
-      <workItem from="1406795827133" duration="4620000" />
+      <workItem from="1406795827133" duration="4832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38812000" />
+    <option name="totallyTimeSpent" value="39024000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
@@ -1201,8 +1196,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/facebook/FacebookConnect.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20418848" vertical-offset="567" max-vertical-offset="1245">
-          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.5968586" vertical-offset="132" max-vertical-offset="1260">
+          <caret line="24" column="274" selection-start-line="24" selection-start-column="274" selection-end-line="24" selection-end-column="274" />
           <folding>
             <element signature="e#18#59#0" expanded="true" />
           </folding>

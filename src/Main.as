@@ -42,8 +42,7 @@ public class Main extends Sprite {
         textField.text = "Hello, World Citrus Game";
         addChild(textField);
 
-        _facebook = new FacebookConnect();
-        addChild(_facebook)
+        _facebook = new FacebookConnect(this.stage);
         _facebook.init();
     }
 

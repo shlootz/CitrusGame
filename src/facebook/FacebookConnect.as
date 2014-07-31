@@ -1,100 +1,77 @@
 package facebook{
+import com.facebook.graph.FacebookMobile;
 import com.freshplanet.ane.AirFacebook.Facebook;
 
-import flash.display.Bitmap;
+import flash.display.Stage;
 
-import flash.display.BitmapData;
+import flash.events.StatusEvent;
+import flash.geom.Rectangle;
+import flash.media.StageWebView;
 
-import flash.display.SimpleButton;
+public class FacebookConnect {
 
-import flash.display.Sprite;
-	import flash.display.StageAlign;
-	import flash.display.StageScaleMode;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.events.StatusEvent;
-    import flash.text.TextField;
-
-
-	public class FacebookConnect extends Sprite {
+        private var _stage:Stage;
 
 		private static const APP_ID:String = "1395615130691927";
 		private static const PERMISSIONS:Array = ["email", "user_about_me", "user_birthday", "user_hometown", "user_website", "offline_access", "read_stream", "publish_stream", "read_friendlists"];
 		
-		private var _facebook:Facebook;
-
-        private var _tField:TextField = new TextField();
-		
-		public function FacebookConnect() {
-			super();
-            _tField.y = 100;
-            _tField.width = 500;
-            _tField.height = 400;
-            addChild(_tField);
+		public function FacebookConnect(stage:Stage) {
+            _stage = stage;
 		}
 		
-		public function init():void
-		{
-			showInfo('facebook.isSupported:', Facebook.isSupported);
-			if(Facebook.isSupported)
-			{
-				_facebook = Facebook.getInstance();
-				_facebook.addEventListener(StatusEvent.STATUS, handler_status);
-				_facebook.init(APP_ID);
-				
-				showInfo("isSeesionOpen:", _facebook.isSessionOpen);
-				if(_facebook.isSessionOpen)
-				{
-					_facebook.dialog("oauth", null, handler_dialog, true);
-				}else{
-                    //_facebook.openSessionWithPermissions(PERMISSIONS, handler_openSessionWithPermissions);
+		public function init():void {
+            trace("Facebook.isSupported "+Facebook.isSupported);
+
+            FacebookMobile.init(APP_ID, facebookInited)
+
+           /* if (Facebook.isSupported) {
+                _facebook = Facebook.getInstance();
+                _facebook.addEventListener(StatusEvent.STATUS, handler_status);
+                _facebook.init(APP_ID);
+
+                if (_facebook.isSessionOpen) {
+                    _facebook.dialog("oauth", null, handler_dialog, true);
+                } else {
                     _facebook.openSessionWithPublishPermissions(PERMISSIONS, handler_openSessionWithPermissions);
-                    //_facebook.dialog("oauth", null, handler_dialog);
-				}
-			}
-		}
-		
-		protected function handler_infoBTNclick($evt:MouseEvent):void
-		{
-			//_facebook.requestWithGraphPath("/me", null, "GET", handler_requesetWithGraphPath);
-			_facebook.requestWithGraphPath("/me/friends", null, "GET", handler_requesetWithGraphPath);
+                }
+            }
+            */
+        }
 
-		}
-		
-		protected function handler_status($evt:StatusEvent):void
-		{
-			showInfo("statusEvent,type:", $evt.type,",code:", $evt.code,",level:", $evt.level);
-		}
-		
-		private function handler_openSessionWithPermissions($success:Boolean, $userCancelled:Boolean, $error:String = null):void
-		{
-			if($success)
-			{
+    private function facebookInited(success:Object, fail:Object):void {
+        if(success)
+        {
+            trace("already logged in")
+        }
+        else {
+            var webview:StageWebView = new StageWebView();
+            webview.viewPort = new Rectangle(0, 0, 400, 400);
 
-			}
-			showInfo("success:", $success, ",userCancelled:", $userCancelled, ",error:", $error);
-		}
-		
-		private function handler_dialog($data:Object):void
-		{
-			showInfo('handler_dialog:', JSON.stringify($data));
-		}
-		
-		private function handler_requesetWithGraphPath($data:Object):void
-		{
-			showInfo("handler_requesetWithGraphPath:", JSON.stringify($data));  
-		}
-		
-		private function showInfo(...$args):void
-		{
-			var __msg:String = "";
-			for (var i:int = 0; i < $args.length; i++) 
-			{
-				__msg += $args[i] + " ";
-			}
-			__msg += "\n";
-			//infoTA.appendText(__msg);
-            _tField.appendText(String(__msg));
-		}
-	}
+            FacebookMobile.login(onLogin, _stage, [], webview);
+        }
+    }
+
+        private function onLogin(success:Object,fail:Object):void
+        {
+            if(success)
+            {
+                trace('facebook connected');
+            } else {
+                trace('facebook error');
+        }
+        }
+
+        private function handler_status(event:StatusEvent):void {
+            trace("!!! "+event);
+        }
+
+        private function handler_dialog(event:Object):void {
+
+        }
+
+        private function handler_openSessionWithPermissions(event:Object):void {
+
+        }
+
+        }
 }

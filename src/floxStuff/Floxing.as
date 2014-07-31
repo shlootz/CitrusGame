@@ -9,8 +9,10 @@ import com.gamua.flox.Player;
 public class Floxing {
 
     private var _player:Player;
+    private var _facebookKey:String;
 
-    public function Floxing() {
+    public function Floxing(uid:String) {
+        _facebookKey = uid;
     }
 
     public function init():void
@@ -22,16 +24,18 @@ public class Floxing {
         if(Player.current.authType == AuthenticationType.GUEST) {
             //Player.current points to a guest player. We need to find/create
             //this player's foreign key and log the player in.
-            var key:String = "facebook-1238589021";
+            var key:String = _facebookKey;
 
             //Now since we have the key, let's login the player.
             Player.loginWithKey(key,
                     function onComplete(player:Player) {
                         //The player is now logged in.
                         //We can continue with the game logic.
+                        trace("Flox first auth succesful")
                     },
                     function onError(message:String) {
                         //An error occurred: Handle it.
+                        trace("Flox first auth error "+message)
                     }
             );
         } else {
@@ -43,9 +47,11 @@ public class Floxing {
                     function onComplete(player:Player) {
                         //The player has now been refreshed.
                         //We can continue with the game logic.
+                        trace("player refresh complete")
                     },
                     function onError(message:String) {
                         //An error occurred: Handle it.
+                        trace("player error "+message);
                     }
             );
         }

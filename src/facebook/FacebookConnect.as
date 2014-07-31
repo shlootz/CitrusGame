@@ -17,23 +17,29 @@ import flash.media.StageWebView;
 import flash.net.URLRequest;
 import flash.utils.ByteArray;
 
+import localStorage.SaveOrRetrieve;
+
 public class FacebookConnect {
 
         private var _stage:Stage;
+        private var _connectedCallBack:Function;
 
 		private static const APP_ID:String = "1395615130691927";
 		private static const PERMISSIONS:Array = ["email", "user_about_me", "user_birthday", "user_hometown", "user_website", "user_photos", "offline_access", "read_stream", "publish_stream", "read_friendlists", "user_friends"];
 	//    private var ACCESS_TOKEN:String = "CAACEdEose0cBAJBOffMGR5r1YBbNaUTKTlBmAW2OG76pkHvTa9Tmq85BNwVbGFfqcSqm5i451LtvHSQAYgTaiG84KAqm7mot6z4JNGG3hJW01ZAZBtr3QMrvhjJZAuFqSTmuvnNhRW5MRZAFZAHrV7tmyBsYNEClAMu98qufxAeZBGefD8LcfzlGJrzZCuOztgrU1SZC5XJUgOfRRQ4cvHZCE";
         private var ACCESS_TOKEN:String = "";
-    
+
     private var _user:Object;
 
-		public function FacebookConnect(stage:Stage) {
+		public function FacebookConnect(stage:Stage, connectedCallback:Function) {
             _stage = stage;
+            _connectedCallBack = connectedCallback;
 		}
 		
 		public function init():void {
             trace("Facebook.isSupported "+Facebook.isSupported);
+            var accToken:String = SaveOrRetrieve.getItem("auth") as String;
+            trace("From local "+accToken);
 
             FacebookMobile.init(APP_ID, facebookInited, ACCESS_TOKEN)
         }
@@ -114,6 +120,8 @@ public class FacebookConnect {
             {
                 trace(FacebookMobile.getSession().accessToken);
                 trace('facebook connected');
+                _connectedCallBack.apply(null, [FacebookMobile.getSession().uid]);
+                SaveOrRetrieve.saveItem("auth", FacebookMobile.getSession().accessToken);
             } else {
                 trace('facebook error');
         }

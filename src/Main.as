@@ -13,6 +13,8 @@ import flash.net.XMLSocket;
 import flash.text.TextField;
 import com.pnwrain.flashsocket.events.FlashSocketEvent;
 
+import floxStuff.Floxing;
+
 
 import simulation.BasicSimulation;
 import simulation.Strategy;
@@ -36,14 +38,21 @@ public class Main extends Sprite {
     private var _strategy:Strategy = new Strategy();
 
     private var _facebook:FacebookConnect;
+    private var _floxing:Floxing;
 
     public function Main() {
         var textField:TextField = new TextField();
         textField.text = "Hello, World Citrus Game";
         addChild(textField);
 
-        _facebook = new FacebookConnect(this.stage);
+        _facebook = new FacebookConnect(this.stage, facebookConnected);
         _facebook.init();
+    }
+
+    private function facebookConnected(uid:String):void
+    {
+        _floxing = new Floxing(uid);
+        _floxing.init();
     }
 
     private function init():void

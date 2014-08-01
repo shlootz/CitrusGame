@@ -31,7 +31,7 @@ public class Floxing {
                     function onComplete(player:Player) {
                         //The player is now logged in.
                         //We can continue with the game logic.
-                        trace("Flox first auth succesful")
+                        trace("Flox auth succesful")
                     },
                     function onError(message:String) {
                         //An error occurred: Handle it.

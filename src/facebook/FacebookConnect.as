@@ -26,8 +26,8 @@ public class FacebookConnect {
 
 		private static const APP_ID:String = "1395615130691927";
 		private static const PERMISSIONS:Array = ["email", "user_about_me", "user_birthday", "user_hometown", "user_website", "user_photos", "offline_access", "read_stream", "publish_stream", "read_friendlists", "user_friends"];
-	//    private var ACCESS_TOKEN:String = "CAACEdEose0cBAJBOffMGR5r1YBbNaUTKTlBmAW2OG76pkHvTa9Tmq85BNwVbGFfqcSqm5i451LtvHSQAYgTaiG84KAqm7mot6z4JNGG3hJW01ZAZBtr3QMrvhjJZAuFqSTmuvnNhRW5MRZAFZAHrV7tmyBsYNEClAMu98qufxAeZBGefD8LcfzlGJrzZCuOztgrU1SZC5XJUgOfRRQ4cvHZCE";
-        private var ACCESS_TOKEN:String = "";
+	    private var ACCESS_TOKEN:String = "CAACEdEose0cBAJBOffMGR5r1YBbNaUTKTlBmAW2OG76pkHvTa9Tmq85BNwVbGFfqcSqm5i451LtvHSQAYgTaiG84KAqm7mot6z4JNGG3hJW01ZAZBtr3QMrvhjJZAuFqSTmuvnNhRW5MRZAFZAHrV7tmyBsYNEClAMu98qufxAeZBGefD8LcfzlGJrzZCuOztgrU1SZC5XJUgOfRRQ4cvHZCE";
+    //    private var ACCESS_TOKEN:String = "";
 
     private var _user:Object;
 
@@ -38,9 +38,10 @@ public class FacebookConnect {
 		
 		public function init():void {
             trace("Facebook.isSupported "+Facebook.isSupported);
-            var accToken:String = SaveOrRetrieve.getItem("auth") as String;
-            trace("From local "+accToken);
-
+            var readAccToken:String = SaveOrRetrieve.getItem("FBAccessToken");
+            if(readAccToken != "null") {
+                ACCESS_TOKEN = readAccToken;
+            }
             FacebookMobile.init(APP_ID, facebookInited, ACCESS_TOKEN)
         }
 
@@ -54,39 +55,45 @@ public class FacebookConnect {
             trace(FacebookMobile.getSession().uid);
             trace(FacebookMobile.getSession().accessToken);
 
-            var loader:Loader = new Loader();
-            loader.load(new URLRequest(FacebookMobile.getImageUrl(FacebookMobile.getSession().uid)));
-
-            loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,loadingError);
-            loader.contentLoaderInfo.addEventListener(Event.COMPLETE,doneLoad);
-
-            FacebookMobile.api("/me", function(success:Object, fail:Object):void {
-                if(success)
-                {
-                    trace("/me succeded"+success);
-                    _user = success;
-                }
-                else
-                {
-                    trace("/me failed"+fail);
-                }
-            });
-
-            FacebookMobile.api("/me/friends", function(success:Object, fail:Object):void {
-                if(success)
-                {
-                    trace("/me/friends succeded"+success);
-                }
-                else
-                {
-                    trace("/me/friends failed"+fail);
-                }
-            });
-
+            doFacebookActions();
         }
         else {
            newLogin();
         }
+    }
+
+    private function doFacebookActions():void
+    {
+        _connectedCallBack.apply(null, [FacebookMobile.getSession().uid]);
+
+        var loader:Loader = new Loader();
+        loader.load(new URLRequest(FacebookMobile.getImageUrl(FacebookMobile.getSession().uid)));
+
+        loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,loadingError);
+        loader.contentLoaderInfo.addEventListener(Event.COMPLETE,doneLoad);
+
+        FacebookMobile.api("/me", function(success:Object, fail:Object):void {
+            if(success)
+            {
+                trace("/me succeded"+success);
+                _user = success;
+            }
+            else
+            {
+                trace("/me failed"+fail);
+            }
+        });
+
+        FacebookMobile.api("/me/friends", function(success:Object, fail:Object):void {
+            if(success)
+            {
+                trace("/me/friends succeded"+success);
+            }
+            else
+            {
+                trace("/me/friends failed"+fail);
+            }
+        });
     }
 
     private function newLogin():void
@@ -120,8 +127,11 @@ public class FacebookConnect {
             {
                 trace(FacebookMobile.getSession().accessToken);
                 trace('facebook connected');
-                _connectedCallBack.apply(null, [FacebookMobile.getSession().uid]);
-                SaveOrRetrieve.saveItem("auth", FacebookMobile.getSession().accessToken);
+
+                var accToken:String = success["accessToken"];
+                SaveOrRetrieve.saveItem("FBAccessToken", accToken);
+
+                doFacebookActions();
             } else {
                 trace('facebook error');
         }

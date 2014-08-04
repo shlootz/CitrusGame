@@ -53,11 +53,16 @@ public class Main extends Sprite {
 
     private function facebookConnected(uid:String):void
     {
-        _floxing = new Floxing(uid);
+        _floxing = new Floxing(uid, floxInited);
         _floxing.init();
     }
 
-    private function init():void
+    private function floxInited():void
+    {
+
+    }
+
+    private function simulationInit():void
     {
         _nodeSocket.connect(socketConnected, onDataReceived);
 

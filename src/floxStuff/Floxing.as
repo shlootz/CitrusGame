@@ -10,9 +10,11 @@ public class Floxing {
 
     private var _player:Player;
     private var _facebookKey:String;
+    private var _floxAuthentificationOnComplete:Function;
 
-    public function Floxing(uid:String) {
+    public function Floxing(uid:String, floxAuthentificationOnComplete:Function) {
         _facebookKey = uid;
+        _floxAuthentificationOnComplete = floxAuthentificationOnComplete;
     }
 
     public function init():void
@@ -31,7 +33,9 @@ public class Floxing {
                     function onComplete(player:Player) {
                         //The player is now logged in.
                         //We can continue with the game logic.
-                        trace("Flox auth succesful")
+                        trace("Flox auth succesful");
+                        _player = player;
+                        _floxAuthentificationOnComplete.call();
                     },
                     function onError(message:String) {
                         //An error occurred: Handle it.
@@ -55,6 +59,10 @@ public class Floxing {
                     }
             );
         }
+    }
+
+    public function get player():Player {
+        return _player;
     }
 }
 }

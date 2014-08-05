@@ -16,16 +16,18 @@
           private var _serverUrl:String;
           private var _port:int;
 		  private var _nickName:String;
+          private var _country:String;
           private var _key:String;
 
           private var _onConnectCallback:Function;
           private var _onDataReceivedCallback:Function;
  
-          public function NodeSocket(url:String, port:int, nickName:String, key:String):void {
+          public function NodeSocket(url:String, port:int, nickName:String, key:String, country:String):void {
                this._serverUrl = url;
                this._port = port;
 			   this._nickName = nickName;
                this._key = key;
+               this._country = country;
           }
  
           public function connect(callBack:Function, onDataCallback:Function):void
@@ -48,7 +50,7 @@
           private function onSocketConnect(e:Event):void
           {
                trace("Connected");
-			   var objToJson = {"nickName":_nickName, "msg":"connecting", "type":_key};
+			   var objToJson = {"nickName":_nickName, "msg":"connecting", "type":_key, "country":_country};
 			  _socket.writeUTFBytes(JSON.stringify(objToJson));
               _socket.flush();
 

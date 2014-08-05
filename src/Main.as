@@ -27,10 +27,14 @@ import simulation.Transport;
 
 public class Main extends Sprite {
 
+    private static const SERVER_IP:String = "127.0.0.1";
+    private static const SERVER_PORT:uint = 9001;
+
     private var _id:String = "PlayerName"+String(Math.random()*99999);
     private var _playerType:String = "miner";
     private var _connectionObject:Object = new Object();
-    private var _nodeSocket:NodeSocket = new NodeSocket("127.0.0.1", 9001, _id, _playerType);
+    private var _playerCountry:String = "Romania";
+    private var _nodeSocket:NodeSocket;
 
     private var _timer:TimeSimulation = new TimeSimulation();
 
@@ -59,11 +63,13 @@ public class Main extends Sprite {
 
     private function floxInited():void
     {
-
+        trace("Flox connected, proceed with server connection");
+        simulationInit();
     }
 
     private function simulationInit():void
     {
+        _nodeSocket = new NodeSocket(SERVER_IP, SERVER_PORT, _id, _playerType, _playerCountry);
         _nodeSocket.connect(socketConnected, onDataReceived);
 
         _strategy.makeNewLinkage(_resourceGathering, _transporter, _consumer);
@@ -90,7 +96,8 @@ public class Main extends Sprite {
     {
         _connectionObject = {
             "produced":_consumer.units,
-            "workerType":_playerType
+            "workerType":_playerType,
+            "country":_playerCountry
         }
         _nodeSocket.writeMessage("", "data", _connectionObject)
     }

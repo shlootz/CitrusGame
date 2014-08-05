@@ -27,9 +27,11 @@ public class FacebookConnect {
 		private static const APP_ID:String = "1395615130691927";
 		private static const PERMISSIONS:Array = ["email", "user_about_me", "user_birthday", "user_hometown", "user_website", "user_photos", "offline_access", "read_stream", "publish_stream", "read_friendlists", "user_friends"];
 	    private var ACCESS_TOKEN:String = "CAACEdEose0cBAJBOffMGR5r1YBbNaUTKTlBmAW2OG76pkHvTa9Tmq85BNwVbGFfqcSqm5i451LtvHSQAYgTaiG84KAqm7mot6z4JNGG3hJW01ZAZBtr3QMrvhjJZAuFqSTmuvnNhRW5MRZAFZAHrV7tmyBsYNEClAMu98qufxAeZBGefD8LcfzlGJrzZCuOztgrU1SZC5XJUgOfRRQ4cvHZCE";
-    //    private var ACCESS_TOKEN:String = "";
+    //  private var ACCESS_TOKEN:String = "";
 
-    private var _user:Object;
+        private var _user:Object;
+        private var _userCountry:String;
+        private var _userFriends:Array;
 
 		public function FacebookConnect(stage:Stage, connectedCallback:Function) {
             _stage = stage;
@@ -45,109 +47,124 @@ public class FacebookConnect {
             FacebookMobile.init(APP_ID, facebookInited, ACCESS_TOKEN)
         }
 
-    private function facebookInited(success:Object, fail:Object):void {
+        private function facebookInited(success:Object, fail:Object):void {
 
-        //newLogin();
+            //newLogin();
 
-        if(success)
-        {
-            trace("already logged in")
-            trace(FacebookMobile.getSession().uid);
-            trace(FacebookMobile.getSession().accessToken);
-
-            doFacebookActions();
-        }
-        else {
-           newLogin();
-        }
-    }
-
-    private function doFacebookActions():void
-    {
-        _connectedCallBack.apply(null, [FacebookMobile.getSession().uid]);
-
-        var loader:Loader = new Loader();
-        loader.load(new URLRequest(FacebookMobile.getImageUrl(FacebookMobile.getSession().uid)));
-
-        loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,loadingError);
-        loader.contentLoaderInfo.addEventListener(Event.COMPLETE,doneLoad);
-
-        FacebookMobile.api("/me", function(success:Object, fail:Object):void {
             if(success)
             {
-                trace("/me succeded"+success);
-                _user = success;
-            }
-            else
-            {
-                trace("/me failed"+fail);
-            }
-        });
-
-        FacebookMobile.api("/me/friends", function(success:Object, fail:Object):void {
-            if(success)
-            {
-                trace("/me/friends succeded"+success);
-            }
-            else
-            {
-                trace("/me/friends failed"+fail);
-            }
-        });
-    }
-
-    private function newLogin():void
-    {
-        var webview:StageWebView = new StageWebView();
-        webview.viewPort = new Rectangle(0, 0, 400, 400);
-
-        FacebookMobile.login(onLogin, _stage, PERMISSIONS, webview);
-    }
-
-    private function doneLoad(e:Event):void
-    {
-        var bm:Bitmap = e.target.content as Bitmap;
-        bm.smoothing = true;
-        bm.x = 10;
-        bm.y = 10;
-        bm.width = 80;
-        bm.height = 80;
-
-        _stage.addChild(bm);
-    }
-
-    private function loadingError(e:IOErrorEvent):void
-    {
-         trace("Picture error loading");
-    }
-
-        private function onLogin(success:Object,fail:Object):void
-        {
-            if(success)
-            {
+                trace("already logged in")
+                trace(FacebookMobile.getSession().uid);
                 trace(FacebookMobile.getSession().accessToken);
-                trace('facebook connected');
-
-                var accToken:String = success["accessToken"];
-                SaveOrRetrieve.saveItem("FBAccessToken", accToken);
 
                 doFacebookActions();
-            } else {
-                trace('facebook error');
-        }
-        }
-
-        private function handler_status(event:StatusEvent):void {
-            trace("!!! "+event);
+            }
+            else {
+               newLogin();
+            }
         }
 
-        private function handler_dialog(event:Object):void {
+        private function doFacebookActions():void
+        {
+            _connectedCallBack.apply(null, [FacebookMobile.getSession().uid]);
 
+            var loader:Loader = new Loader();
+            loader.load(new URLRequest(FacebookMobile.getImageUrl(FacebookMobile.getSession().uid)));
+
+            loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,loadingError);
+            loader.contentLoaderInfo.addEventListener(Event.COMPLETE,doneLoad);
+
+            FacebookMobile.api("/me", function(success:Object, fail:Object):void {
+                if(success)
+                {
+                    trace("/me succeded"+success);
+                    _user = success;
+                }
+                else
+                {
+                    trace("/me failed"+fail);
+                }
+            });
+
+            FacebookMobile.api("/me/friends", function(success:Object, fail:Object):void {
+                if(success)
+                {
+                    trace("/me/friends succeded"+success);
+                }
+                else
+                {
+                    trace("/me/friends failed"+fail);
+                }
+            });
         }
 
-        private function handler_openSessionWithPermissions(event:Object):void {
+        private function newLogin():void
+        {
+            var webview:StageWebView = new StageWebView();
+            webview.viewPort = new Rectangle(0, 0, 400, 400);
 
+            FacebookMobile.login(onLogin, _stage, PERMISSIONS, webview);
         }
 
+        private function doneLoad(e:Event):void
+        {
+            var bm:Bitmap = e.target.content as Bitmap;
+            bm.smoothing = true;
+            bm.x = 10;
+            bm.y = 10;
+            bm.width = 80;
+            bm.height = 80;
+
+            _stage.addChild(bm);
+        }
+
+        private function loadingError(e:IOErrorEvent):void
+        {
+             trace("Picture error loading");
+        }
+
+            private function onLogin(success:Object,fail:Object):void
+            {
+                if(success)
+                {
+                    trace(FacebookMobile.getSession().accessToken);
+                    trace('facebook connected');
+
+                    var accToken:String = success["accessToken"];
+                    SaveOrRetrieve.saveItem("FBAccessToken", accToken);
+
+                    doFacebookActions();
+                } else {
+                    trace('facebook error');
+            }
+            }
+
+            private function handler_status(event:StatusEvent):void {
+                trace("!!! "+event);
+            }
+
+            private function handler_dialog(event:Object):void {
+
+            }
+
+            private function handler_openSessionWithPermissions(event:Object):void {
+
+            }
+
+            public function get userCountry():String {
+                return _userCountry;
+            }
+
+            public function set userCountry(value:String):void {
+                _userCountry = value;
+            }
+
+            public function get userFriends():Array {
+                return _userFriends;
+            }
+
+            public function set userFriends(value:Array):void {
+                _userFriends = value;
+            }
         }
 }

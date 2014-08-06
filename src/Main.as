@@ -51,8 +51,12 @@ public class Main extends Sprite {
         textField.text = "Hello, World Citrus Game";
         addChild(textField);
 
-        _facebook = new FacebookConnect(this.stage, facebookConnected);
-        _facebook.init();
+        // For emulation use directly simulationInit()
+        simulationInit();
+
+        // For mobile, use facebook connection
+        //_facebook = new FacebookConnect(this.stage, facebookConnected);
+        //_facebook.init();
     }
 
     private function facebookConnected(uid:String):void
@@ -90,6 +94,8 @@ public class Main extends Sprite {
         _resourceGathering.workers = obj["data"]["miners"];
         _transporter.workers = obj["data"]["transporters"];
         _consumer.workers = obj["data"]["producers"];
+
+        trace(obj["data"]["users"]);
     }
 
     private function feedServer():void

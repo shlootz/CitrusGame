@@ -7,6 +7,7 @@ import flash.utils.Timer;
 
 public class TimeSimulation {
 
+    private var _totalTimeSpent:uint = 0;
     private var _myTimer:Timer;
     private var _listeners:Vector.<Function> = new Vector.<Function>();
 
@@ -21,6 +22,7 @@ public class TimeSimulation {
         {
             _listeners[i].call();
         }
+        _totalTimeSpent++;
     }
 
     public function startTimer():void
@@ -41,6 +43,14 @@ public class TimeSimulation {
     public function addListenerToTimer(f:Function):void
     {
         _listeners.push(f);
+    }
+
+    public function get totalTimeSpent():uint {
+        return _totalTimeSpent;
+    }
+
+    public function set totalTimeSpent(value:uint):void {
+        _totalTimeSpent = value;
     }
 }
 }

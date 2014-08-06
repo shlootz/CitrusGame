@@ -5,6 +5,7 @@ var mySockets = {};
 //Socket events
 const NICK_NAME = "nickName";
 const PLAYER_TYPE = "type";
+const PLAYER_COUNTRY = "country";
 const MESSAGE = "msg";
 const EVENT_DATA_RECEIVED = "data";
 const EVENT_CONNECT = "connect";
@@ -18,11 +19,6 @@ const CLIENT_CONNECTING = "connecting";
 const TYPE_MINER = "miner";
 const TYPE_PRODUCER = "producer";
 const TYPE_TRANSPORTER = "transporter";
-
-//Game related
-var miners = 0;
-var producers = 0;
-var transporters = 0;
 
 // create the server and register event listeners
 var server = net.createServer(function(socket) {
@@ -46,6 +42,7 @@ var server = net.createServer(function(socket) {
                                     var nName = "";
                                     var type = "";
                                     var message = "";
+                                    var country = "";
 
                                     answer = JSON.parse(d);
 
@@ -56,12 +53,22 @@ var server = net.createServer(function(socket) {
 
                                     nName =  data[NICK_NAME];
                                     type = data[PLAYER_TYPE];
-                                    message = data[MESSAGE]
+                                    message = data[MESSAGE];
+                                    country = data[PLAYER_COUNTRY];
 
                                     if(message == CLIENT_CONNECTING) {
-                                        mySockets[nName] = {
-                                            socket: socket,
-                                            type: type
+                                        if (mySockets[country] == null)
+                                        {
+                                            mySockets[country] = {
+                                                socketsList:{
+
+                                                }
+                                            }
+                                        }
+
+                                        mySockets[country]["socketsList"][nName] = {
+                                            socketObj: socket,
+                                            userType: type
                                         }
 
                                         updateTypesCounts(type);
@@ -88,15 +95,23 @@ function genericData(socket, obj)
 
     console.log(data["produced"])
 
-    updateClient(socket);
+    updateClient(socket, data);
 }
 
-function updateClient(socket)
+function updateClient(socket, dataFromClient)
 {
+    console.log("dataFromClient[country] "+dataFromClient["country"]);
+    console.log(mySockets[dataFromClient["country"]]);
+
+   // { sockets: { 'PlayerName25431.570017585065': { socket: [Object], type: 'miner' } } }
+
     var data = {
-        "miners":miners,
-        "transporters":transporters,
-        "producers":producers
+        "miners":1,
+        "transporters":1,
+        "producers":1,
+        "users":{
+            "list":mySockets[dataFromClient["country"]]
+        }
     }
     var response = {
         "type":"updatePlayers",
@@ -110,20 +125,17 @@ function updateTypesCounts(type)
 {
    if(type == TYPE_MINER)
    {
-       miners ++;
-       console.log("Miners :"+miners);
+       console.log("Miners :");
    }
 
     if(type == TYPE_TRANSPORTER)
     {
-        transporters ++;
-        console.log("Transporters :"+transporters);
+        console.log("Transporters :");
     }
 
     if(type == TYPE_PRODUCER)
     {
-        producers ++;
-        console.log("Producers :"+producers);
+        console.log("Producers :");
     }
 }
 

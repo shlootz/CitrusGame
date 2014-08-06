@@ -100,7 +100,8 @@
 				  "nickName":_nickName, 
 				  "msg":message,
                   "type":type,
-                  "obj":obj
+                  "obj":obj,
+                  "country":_country
 				  };
 				  
 			   trace("Sending : "+objToJson);	 

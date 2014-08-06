@@ -94,8 +94,6 @@ public class Main extends Sprite {
         _resourceGathering.workers = obj["data"]["miners"];
         _transporter.workers = obj["data"]["transporters"];
         _consumer.workers = obj["data"]["producers"];
-
-        trace(obj["data"]["users"]);
     }
 
     private function feedServer():void

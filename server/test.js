@@ -85,33 +85,46 @@ var server = net.createServer(function(socket) {
                               });
 
 // When flash sends us data, this method will handle it
-function genericData(socket, obj)
-{
+function genericData(socket, obj) {
     var data = new Object();
-    for (x in obj)
-    {
+    for (x in obj) {
         data[String(x)] = obj[x];
     }
-
-    console.log(data["produced"])
-
-    updateClient(socket, data);
+    if (data["country"] != undefined) {
+        updateClient(socket, data["country"]);
+    }
 }
 
-function updateClient(socket, dataFromClient)
+function updateClient(socket, country)
 {
-    console.log("dataFromClient[country] "+dataFromClient["country"]);
-    console.log(mySockets[dataFromClient["country"]]);
+    var miners = 0;
+    var transporters = 0;
+    var producers = 0;
 
-   // { sockets: { 'PlayerName25431.570017585065': { socket: [Object], type: 'miner' } } }
+    var obj = mySockets[country]["socketsList"];
+    for (x in obj)
+    {
+        console.log("----------------------------- "+x);
+        if(obj[x]["userType"] == TYPE_MINER)
+        {
+            miners ++
+        }
+
+        if(obj[x]["userType"] == TYPE_PRODUCER)
+        {
+            producers ++
+        }
+
+        if(obj[x]["userType"] == TYPE_TRANSPORTER)
+        {
+            transporters ++
+        }
+    }
 
     var data = {
-        "miners":1,
-        "transporters":1,
-        "producers":1,
-        "users":{
-            "list":mySockets[dataFromClient["country"]]
-        }
+        "miners":miners,
+        "transporters":transporters,
+        "producers":producers
     }
     var response = {
         "type":"updatePlayers",

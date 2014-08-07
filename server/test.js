@@ -22,7 +22,7 @@ const TYPE_TRANSPORTER = "transporter";
 
 // create the server and register event listeners
 var server = net.createServer(function(socket) {
-                                socket.on(EVENT_CONNECT, function(socket){
+                                socket.on(EVENT_CONNECT, function(){
                                     console.log("Connected to Flash");
                                 });
                                 socket.on(EVENT_DISCONNECT, function()
@@ -71,7 +71,6 @@ var server = net.createServer(function(socket) {
                                             userType: type
                                         }
 
-                                        updateTypesCounts(type);
                                         console.log(nName +" of race "+type+ " just connected");
 
                                         socket.setTimeout(3000)
@@ -104,7 +103,6 @@ function updateClient(socket, country)
     var obj = mySockets[country]["socketsList"];
     for (x in obj)
     {
-        console.log("----------------------------- "+x);
         if(obj[x]["userType"] == TYPE_MINER)
         {
             miners ++
@@ -131,25 +129,6 @@ function updateClient(socket, country)
         "data":data
     }
     socket.write(JSON.stringify(response));
-}
-
-// On each connect, the type is checked and the numbers are updated
-function updateTypesCounts(type)
-{
-   if(type == TYPE_MINER)
-   {
-       console.log("Miners :");
-   }
-
-    if(type == TYPE_TRANSPORTER)
-    {
-        console.log("Transporters :");
-    }
-
-    if(type == TYPE_PRODUCER)
-    {
-        console.log("Producers :");
-    }
 }
 
 // listen for connections

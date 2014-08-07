@@ -1,5 +1,5 @@
 /**
- * Created by adm on 29.07.14.
+ * Created by Alex Popescu on 29.07.14.
  */
 package simulation {
 import flash.events.TimerEvent;

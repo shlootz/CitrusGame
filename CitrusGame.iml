@@ -23,13 +23,28 @@
             <entry library-name="GraphAPI_Mobile_1_8_1" library-level="project">
               <dependency linkage="Merged" />
             </entry>
+            <entry library-name="CEV3-1-9-ALL" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="GraphicsBridge" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="greensock" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="SignalsManager" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
+            <entry library-name="src" library-level="project">
+              <dependency linkage="Merged" />
+            </entry>
           </entries>
           <sdk name="AIRSDK_Compiler" />
         </dependencies>
         <compiler-options />
         <packaging-air-desktop />
-        <packaging-android enabled="true" custom-descriptor-path="$MODULE_DIR$/Main-app.xml" package-file-name="Main" />
-        <packaging-ios enabled="true" custom-descriptor-path="$MODULE_DIR$/Main-app.xml" package-file-name="Main" />
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/Main-app.xml" package-file-name="Main" />
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/Main-app.xml" package-file-name="Main" />
       </configuration>
     </configurations>
     <compiler-options />
@@ -48,6 +63,11 @@
     <orderEntry type="library" exported="" name="GraphAPI_Desktop_1_8_1" level="project" />
     <orderEntry type="library" exported="" name="AirFacebook" level="project" />
     <orderEntry type="library" exported="" name="GraphAPI_Mobile_1_8_1" level="project" />
+    <orderEntry type="library" exported="" name="CEV3-1-9-ALL" level="project" />
+    <orderEntry type="library" exported="" name="GraphicsBridge" level="project" />
+    <orderEntry type="library" exported="" name="greensock" level="project" />
+    <orderEntry type="library" exported="" name="SignalsManager" level="project" />
+    <orderEntry type="library" exported="" name="src" level="project" />
   </component>
 </module>
 

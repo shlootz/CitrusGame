@@ -30,14 +30,14 @@ public class Floxing {
 
             //Now since we have the key, let's login the player.
             Player.loginWithKey(key,
-                    function onComplete(player:Player) {
+                    function onComplete(player:Player):void {
                         //The player is now logged in.
                         //We can continue with the game logic.
                         trace("Flox auth succesful");
                         _player = player;
                         _floxAuthentificationOnComplete.call();
                     },
-                    function onError(message:String) {
+                    function onError(message:String):void {
                         //An error occurred: Handle it.
                         trace("Flox first auth error "+message)
                     }
@@ -48,12 +48,12 @@ public class Floxing {
             //In order to get the current players server state we need to call
             //refresh on the player.
             Player.current.refresh(
-                    function onComplete(player:Player) {
+                    function onComplete(player:Player):void {
                         //The player has now been refreshed.
                         //We can continue with the game logic.
                         trace("player refresh complete")
                     },
-                    function onError(message:String) {
+                    function onError(message:String):void {
                         //An error occurred: Handle it.
                         trace("player error "+message);
                     }

@@ -50,7 +50,7 @@
           private function onSocketConnect(e:Event):void
           {
                trace("Connected");
-			   var objToJson = {"nickName":_nickName, "msg":"connecting", "type":_key, "country":_country};
+			   var objToJson:Object = {"nickName":_nickName, "msg":"connecting", "type":_key, "country":_country};
 			  _socket.writeUTFBytes(JSON.stringify(objToJson));
               _socket.flush();
 
@@ -96,7 +96,7 @@
           public function writeMessage(message:String, type:String="", obj:Object = null):void
           {
 			  
-			  var objToJson = {
+			  var objToJson:Object = {
 				  "nickName":_nickName, 
 				  "msg":message,
                   "type":type,

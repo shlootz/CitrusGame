@@ -12,7 +12,7 @@
 
     <!-- A universally unique application identifier. Must be unique across all AIR applications.
          Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-    <id>com.CitrusGame.Main</id>
+    <id>Main</id>
 
     <!-- Used as the filename for the application. Required. -->
     <filename>Main</filename>
@@ -91,7 +91,7 @@
 
         <!-- The aspect ratio of the app ("portrait" or "landscape" or "any"). Optional. Mobile only. Default is the natural orientation of the device -->
         <!--<aspectRatio></aspectRatio>-->
-
+        <aspectRatio>landscape</aspectRatio>
         <!-- Whether the app will begin auto-orienting on launch. Optional. Mobile only. Default false -->
         <autoOrients>true</autoOrients>
 
@@ -100,7 +100,7 @@
 
         <!-- The render mode for the app (either auto, cpu, gpu, or direct). Optional. Default auto -->
         <!--<renderMode></renderMode>-->
-
+        <renderMode>direct</renderMode>
         <!-- Whether the default direct mode rendering context allocates storage for depth and stencil buffers.  Optional.  Default false. -->
         <!--<depthAndStencil></depthAndStencil>-->
 
@@ -228,7 +228,7 @@
                 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
                 <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
                 <!--<uses-permission android:name="android.permission.VIBRATE"/>-->
-                <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
+                <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
                 <!--<uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>-->
                 <!--<uses-permission android:name="android.permission.WAKE_LOCK"/>-->
                 <!--<uses-permission android:name="android.permission.CAMERA"/>-->

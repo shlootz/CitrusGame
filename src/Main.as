@@ -3,7 +3,12 @@ package {
 import bridge.BridgeGraphics;
 import bridge.IBridgeGraphics;
 import bridge.abstract.AbstractPool;
+import bridge.abstract.IAbstractDisplayObject;
 import bridge.abstract.IAbstractState;
+import bridge.abstract.transitions.IAbstractStateTransition;
+
+import com.greensock.TweenLite;
+import com.greensock.easing.Cubic;
 
 import com.pnwrain.flashsocket.FlashSocket;
 import com.pnwrain.flashsocket.events.FlashSocketEvent;
@@ -24,6 +29,12 @@ import flash.text.TextField;
 import com.pnwrain.flashsocket.events.FlashSocketEvent;
 
 import floxStuff.Floxing;
+
+import gameGraphics.connecting.ConnectingToNode;
+import gameGraphics.error.ErrorState;
+import gameGraphics.game.GameState;
+
+import gameGraphics.loginMenu.LoginState;
 
 import gameGraphics.preloader.Preloader;
 import gameGraphics.preloader.PreloaderState;
@@ -50,6 +61,7 @@ import starling.animation.Juggler;
 import starling.utils.AssetManager;
 
 import starlingEngine.StarlingEngine;
+import starlingEngine.transitions.EngineStateTransition;
 
 [SWF(backgroundColor='#ffffff',frameRate='60')]
 
@@ -91,11 +103,17 @@ public class Main extends Sprite {
             starling.animation.Juggler,
             nape.space.Space,
             true);
+
+    private var _stateTransition:IAbstractStateTransition;
+
     private var _loadingState:IAbstractState;
+    private var _loginState:IAbstractState;
+    private var _connectingToServerState:IAbstractState;
+    private var _gameState:IAbstractState;
+    private var _errorState:IAbstractState;
 
     public function Main() {
         initGraphics();
-        initConnections();
     }
 
     private function initGraphics():void{
@@ -109,14 +127,24 @@ public class Main extends Sprite {
 
         _bridgeGraphics.tranzitionToState(_loadingState);
 
-        (_bridgeGraphics.assetsManager).enqueue("assets/ui.png", "assets/ui.xml");
+        (_bridgeGraphics.assetsManager).enqueue("assets/ui.png", "assets/ui.xml", "assets/layouts/testLayout.xml");
 
         (_bridgeGraphics.assetsManager).loadQueue(function(ratio:Number):void
             {
                 trace("Loading assets, progress:", ratio);
                 if (ratio == 1)
                 {
-                    trace("loaded");
+                    _stateTransition = new EngineStateTransition();
+                    _stateTransition.injectAnimation(function(obj1:IAbstractDisplayObject, obj2:IAbstractDisplayObject):void{
+                        obj2.y = -480;
+                        TweenLite.to(obj1, .5, {y:480, ease:Cubic.easeOut, onComplete:_stateTransition.onTransitionComplete, onCompleteParams:[obj1, obj2]});
+                        TweenLite.to(obj2, .3, {y:0, ease:Cubic.easeOut});
+                    })
+
+                    _loginState = new LoginState(_bridgeGraphics);
+                    _bridgeGraphics.tranzitionToState(_loginState, _stateTransition)
+
+                    initConnections();
                 }
             });
     }
@@ -146,8 +174,12 @@ public class Main extends Sprite {
 
     private function simulationInit():void
     {
+        _connectingToServerState = new ConnectingToNode(_bridgeGraphics);
+        _bridgeGraphics.tranzitionToState(_connectingToServerState, _stateTransition)
+
         _nodeSocket = new NodeSocket(SERVER_IP, SERVER_PORT, _id, _playerType, _playerCountry);
         _nodeSocket.connect(socketConnected, onDataReceived);
+        _nodeSocket.onErrorCallBack = caughtError;
 
         _strategy.makeNewLinkage(_resourceGathering, _transporter, _consumer);
         _strategy.makeNewLinkage(_resourceGathering, null, _transporter);
@@ -159,6 +191,8 @@ public class Main extends Sprite {
 
     private function socketConnected():void
     {
+        _gameState = new GameState(_bridgeGraphics);
+        _bridgeGraphics.tranzitionToState(_gameState, _stateTransition)
         _nodeSocket.writeMessage("test");
     }
 
@@ -177,6 +211,12 @@ public class Main extends Sprite {
             "country":_playerCountry
         }
         _nodeSocket.writeMessage("", "data", _connectionObject)
+    }
+
+    private function caughtError(errorType:String, error:Object):void
+    {
+        _errorState = new ErrorState(_bridgeGraphics);
+        _bridgeGraphics.tranzitionToState(_errorState, _stateTransition);
     }
 }
 }

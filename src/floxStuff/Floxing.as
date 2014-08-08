@@ -2,12 +2,15 @@
  * Created by adm on 30.07.14.
  */
 package floxStuff {
+import bridge.abstract.IAbstractState;
+
 import com.gamua.flox.AuthenticationType;
 import com.gamua.flox.Flox;
 import com.gamua.flox.Player;
 
 public class Floxing {
 
+    private var _display:IAbstractState;
     private var _player:Player;
     private var _facebookKey:String;
     private var _floxAuthentificationOnComplete:Function;
@@ -63,6 +66,14 @@ public class Floxing {
 
     public function get player():Player {
         return _player;
+    }
+
+    public function get display():IAbstractState {
+        return _display;
+    }
+
+    public function set display(value:IAbstractState):void {
+        _display = value;
     }
 }
 }

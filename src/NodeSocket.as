@@ -1,6 +1,8 @@
 ﻿package
 {
-     import flash.events.Event;
+import bridge.abstract.IAbstractState;
+
+import flash.events.Event;
      import flash.events.EventDispatcher;
      import flash.events.IOErrorEvent;
      import flash.events.ProgressEvent;
@@ -10,6 +12,8 @@
  
      public class NodeSocket
      {
+          private var _display:IAbstractState;
+
           private var _socket:Socket;
           private var _beenVerified:Boolean;
  
@@ -20,6 +24,8 @@
           private var _key:String;
 
           private var _onConnectCallback:Function;
+          private var _onErrorCallBack:Function;
+          private var _onDisconnectCallback:Function;
           private var _onDataReceivedCallback:Function;
  
           public function NodeSocket(url:String, port:int, nickName:String, key:String, country:String):void {
@@ -67,12 +73,14 @@
           {
 			  trace("Security Error");
                disconnectSocket();
+              _onErrorCallBack.apply(null, ["Security Error", e])
           }
  
           private function onIOError(e:IOErrorEvent):void
           {
 			  trace("Error")
                disconnectSocket();
+              _onErrorCallBack.apply(null, ["Connection Error", e])
           }
  
           private function onSocketData(e:ProgressEvent):void
@@ -137,5 +145,29 @@
                     _socket = null;
                }
           }
+
+         public function get display():IAbstractState {
+             return _display;
+         }
+
+         public function set display(value:IAbstractState):void {
+             _display = value;
+         }
+
+         public function get onErrorCallBack():Function {
+             return _onErrorCallBack;
+         }
+
+         public function set onErrorCallBack(value:Function):void {
+             _onErrorCallBack = value;
+         }
+
+         public function get onDisconnectCallback():Function {
+             return _onDisconnectCallback;
+         }
+
+         public function set onDisconnectCallback(value:Function):void {
+             _onDisconnectCallback = value;
+         }
      }
 }

@@ -1,4 +1,6 @@
 package facebook{
+import bridge.abstract.IAbstractState;
+
 import com.facebook.graph.FacebookMobile;
 import com.freshplanet.ane.AirFacebook.Facebook;
 
@@ -22,6 +24,7 @@ import localStorage.SaveOrRetrieve;
 public class FacebookConnect {
 
         private var _stage:Stage;
+        private var _display:IAbstractState;
         private var _connectedCallBack:Function;
 
 		private static const APP_ID:String = "1395615130691927";
@@ -166,5 +169,13 @@ public class FacebookConnect {
             public function set userFriends(value:Array):void {
                 _userFriends = value;
             }
-        }
+
+    public function get display():IAbstractState {
+        return _display;
+    }
+
+    public function set display(value:IAbstractState):void {
+        _display = value;
+    }
+}
 }

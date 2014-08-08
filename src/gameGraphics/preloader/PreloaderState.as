@@ -17,7 +17,15 @@ public class PreloaderState extends AbstractState implements IAbstractState
 
     public function PreloaderState(graphicsEngine:IBridgeGraphics) {
         super(graphicsEngine);
-        addNewChild(_bridgeGraphics.requestImageFromBitmapData(new BitmapData(300,300,false, 0xFF0000)));
+        addNewChild(_bridgeGraphics.requestImageFromBitmapData(new BitmapData(800,480,false, 0xFF0000)));
+
+        trace("=> PRELOADER STATE");
     }
+
+    override public function killAll(... rest):void
+    {
+        super.killAll(rest);
+    }
+
 }
 }

@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e851299-2b18-4f09-8bb0-5ebe63af7e47" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gameGraphics/connecting/ConnectingToNode.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gameGraphics/error/ErrorState.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gameGraphics/game/GameState.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gameGraphics/loginMenu/LoginState.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/facebook/FacebookConnect.as" afterPath="$PROJECT_DIR$/src/facebook/FacebookConnect.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/floxStuff/Floxing.as" afterPath="$PROJECT_DIR$/src/floxStuff/Floxing.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameGraphics/connecting/ConnectingToNode.as" afterPath="$PROJECT_DIR$/src/gameGraphics/connecting/ConnectingToNode.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameGraphics/error/ErrorState.as" afterPath="$PROJECT_DIR$/src/gameGraphics/error/ErrorState.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameGraphics/game/GameState.as" afterPath="$PROJECT_DIR$/src/gameGraphics/game/GameState.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.as" afterPath="$PROJECT_DIR$/src/Main.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NodeSocket.as" afterPath="$PROJECT_DIR$/src/NodeSocket.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gameGraphics/preloader/PreloaderState.as" afterPath="$PROJECT_DIR$/src/gameGraphics/preloader/PreloaderState.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CitrusGame.iws" />
@@ -34,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.as" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Main.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.7037037" vertical-offset="3015" max-vertical-offset="3420">
-              <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="3480">
+              <caret line="148" column="38" selection-start-line="148" selection-start-column="38" selection-end-line="148" selection-end-column="38" />
               <folding>
                 <element signature="e#11#40#0" expanded="true" />
               </folding>
@@ -46,24 +41,54 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FacebookConnect.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/facebook/FacebookConnect.as">
+      <file leaf-file-name="GameState.as" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gameGraphics/game/GameState.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="2505">
-              <caret line="26" column="44" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.8767967" vertical-offset="428" max-vertical-offset="1005">
+              <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
+              <folding>
+                <element signature="e#67#97#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginState.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gameGraphics/loginMenu/LoginState.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NodeSocket.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NodeSocket.as">
+      <file leaf-file-name="PreloaderState.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gameGraphics/preloader/PreloaderState.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2670">
-              <caret line="82" column="55" selection-start-line="82" selection-start-column="55" selection-end-line="82" selection-end-column="55" />
-              <folding>
-                <element signature="e#10#48#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+              <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hamster.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out/production/CitrusGame/assets/hamster.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+              <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ErrorState.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gameGraphics/error/ErrorState.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+              <caret line="14" column="103" selection-start-line="14" selection-start-column="103" selection-end-line="14" selection-end-column="103" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,11 +96,9 @@
       <file leaf-file-name="ConnectingToNode.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gameGraphics/connecting/ConnectingToNode.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-              <folding>
-                <element signature="e#73#103#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+              <caret line="14" column="105" selection-start-line="14" selection-start-column="105" selection-end-line="14" selection-end-column="105" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,8 +106,8 @@
       <file leaf-file-name="ui.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/out/production/CitrusGame/assets/ui.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="769" max-vertical-offset="1380">
-              <caret line="63" column="33" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -120,17 +143,19 @@
         <option value="$PROJECT_DIR$/src/gameGraphics/preloader/Preloader.as" />
         <option value="$PROJECT_DIR$/src/facebook/FacebookConnect.as" />
         <option value="$PROJECT_DIR$/src/floxStuff/Floxing.as" />
-        <option value="$PROJECT_DIR$/src/gameGraphics/game/GameState.as" />
         <option value="$PROJECT_DIR$/src/gameGraphics/preloader/PreloaderState.as" />
         <option value="$PROJECT_DIR$/src/gameGraphics/loginMenu/LoginState.as" />
-        <option value="$PROJECT_DIR$/src/gameGraphics/connecting/ConnectingToNode.as" />
-        <option value="$PROJECT_DIR$/src/gameGraphics/error/ErrorState.as" />
         <option value="$PROJECT_DIR$/src/NodeSocket.as" />
+        <option value="$PROJECT_DIR$/src/gameGraphics/error/ErrorState.as" />
+        <option value="$PROJECT_DIR$/src/gameGraphics/connecting/ConnectingToNode.as" />
         <option value="$PROJECT_DIR$/src/Main.as" />
+        <option value="$PROJECT_DIR$/out/production/CitrusGame/assets/hamster.xml" />
+        <option value="$PROJECT_DIR$/src/gameGraphics/game/GameState.as" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="-2" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
@@ -213,46 +238,6 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="gameGraphics" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CitrusGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CitrusGame" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gameGraphics" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connecting" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CitrusGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CitrusGame" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="facebook" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -273,8 +258,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -756,15 +741,17 @@
       <workItem from="1407316772854" duration="3995000" />
       <workItem from="1407324609798" duration="1941000" />
       <workItem from="1407412374754" duration="4541000" />
-      <workItem from="1407480537834" duration="4595000" />
+      <workItem from="1407480537834" duration="5730000" />
+      <workItem from="1407502987642" duration="18000" />
+      <workItem from="1407748662685" duration="5860000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73973000" />
+    <option name="totallyTimeSpent" value="80986000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
+    <frame x="-2" y="23" width="1280" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -772,7 +759,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4090909" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -787,11 +773,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25234374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.253125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23579545" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -820,7 +807,7 @@
           <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="30" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -828,16 +815,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="885">
-          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-          <folding>
-            <element signature="e#11#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="690">
@@ -1051,13 +1028,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulation/TimeSimulation.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../isb_starling_adaptor/src/starlingEngine/elements/EngineDisplayObjectContainer.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28030303" vertical-offset="294" max-vertical-offset="690">
@@ -1097,7 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="190" max-vertical-offset="660">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1120,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1128,7 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="10" max-vertical-offset="4680">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1136,17 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.8846154" vertical-offset="10845" max-vertical-offset="18480">
           <caret line="728" column="32" selection-start-line="728" selection-start-column="16" selection-end-line="728" selection-end-column="32" />
-          <folding>
-            <element signature="e#26#59#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/production/CitrusGame/assets/ui.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="769" max-vertical-offset="1380">
-          <caret line="63" column="33" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1158,61 +1114,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameGraphics/preloader/PreloaderState.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/floxStuff/Floxing.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1245">
           <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="e#59#97#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameGraphics/loginMenu/LoginState.as">
+    <entry file="file://$PROJECT_DIR$/src/NodeSocket.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding>
-            <element signature="e#72#102#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameGraphics/game/GameState.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <element signature="e#67#97#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameGraphics/error/ErrorState.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-          <caret line="14" column="103" selection-start-line="14" selection-start-column="103" selection-end-line="14" selection-end-column="103" />
-          <folding>
-            <element signature="e#68#98#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameGraphics/connecting/ConnectingToNode.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding>
-            <element signature="e#73#103#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2670">
+          <caret line="82" column="55" selection-start-line="82" selection-start-column="55" selection-end-line="82" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1224,22 +1137,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NodeSocket.as">
+    <entry file="file://$PROJECT_DIR$/src/gameGraphics/loginMenu/LoginState.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2670">
-          <caret line="82" column="55" selection-start-line="82" selection-start-column="55" selection-end-line="82" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameGraphics/preloader/PreloaderState.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulation/TimeSimulation.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4655582" vertical-offset="494" max-vertical-offset="915">
+          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
           <folding>
-            <element signature="e#10#48#0" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameGraphics/error/ErrorState.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="14" column="103" selection-start-line="14" selection-start-column="103" selection-end-line="14" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameGraphics/connecting/ConnectingToNode.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+          <caret line="14" column="105" selection-start-line="14" selection-start-column="105" selection-end-line="14" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/CitrusGame/assets/ui.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/CitrusGame/assets/hamster.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7037037" vertical-offset="3015" max-vertical-offset="3420">
-          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2010" max-vertical-offset="3480">
+          <caret line="148" column="38" selection-start-line="148" selection-start-column="38" selection-end-line="148" selection-end-column="38" />
           <folding>
             <element signature="e#11#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameGraphics/game/GameState.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8767967" vertical-offset="428" max-vertical-offset="1005">
+          <caret line="59" column="47" selection-start-line="59" selection-start-column="47" selection-end-line="59" selection-end-column="47" />
+          <folding>
+            <element signature="e#67#97#0" expanded="true" />
           </folding>
         </state>
       </provider>

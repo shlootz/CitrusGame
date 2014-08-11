@@ -12,12 +12,12 @@ import gameGraphics.AbstractState;
 public class ErrorState extends AbstractState implements IAbstractState{
     public function ErrorState(graphicsEngine:IBridgeGraphics) {
         super(graphicsEngine);
-        addNewChild(_bridgeGraphics.requestImageFromBitmapData(new BitmapData(800, 480, false, 0x123456)));
-
+        addNewChild(_bridgeGraphics.requestImageFromBitmapData(new BitmapData(800, 480, false, 0xFFFFFF)));
+        addNewChild(_bridgeGraphics.requestImage("dialog"));
         trace("=> ERROR STATE");
     }
 
-    override public function killAll(... rest):void
+    override public function killAll(...rest):void
     {
         super.killAll(rest);
     }

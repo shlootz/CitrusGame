@@ -13,11 +13,10 @@ public class ConnectingToNode extends AbstractState implements IAbstractState{
     public function ConnectingToNode(graphicsEngine:IBridgeGraphics) {
         super(graphicsEngine);
         addNewChild(_bridgeGraphics.requestImageFromBitmapData(new BitmapData(800,480,false, 0xCCCC00)));
-
         trace("=> CONNECTING TO NODE");
     }
 
-    override public function killAll(... rest):void
+    override public function killAll(...rest):void
     {
         super.killAll(rest);
     }

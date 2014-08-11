@@ -80,7 +80,7 @@ public class Main extends Sprite {
     //PLAYER DETAILS
     //TO DO - _id must cbe the facebook id
     private var _id:String = "PlayerName"+String(Math.random()*99999);
-    private var _playerType:String = "miner";
+    private var _playerType:String = "producer";
     private var _connectionObject:Object = new Object();
     private var _playerCountry:String = "Romania";
     private var _nodeSocket:NodeSocket;
@@ -109,7 +109,7 @@ public class Main extends Sprite {
     private var _loadingState:IAbstractState;
     private var _loginState:IAbstractState;
     private var _connectingToServerState:IAbstractState;
-    private var _gameState:IAbstractState;
+    private var _gameState:GameState;
     private var _errorState:IAbstractState;
 
     public function Main() {
@@ -127,13 +127,15 @@ public class Main extends Sprite {
 
         _bridgeGraphics.tranzitionToState(_loadingState);
 
-        (_bridgeGraphics.assetsManager).enqueue("assets/ui.png", "assets/ui.xml", "assets/layouts/testLayout.xml");
+        (_bridgeGraphics.assetsManager).enqueue("assets/ui.png", "assets/ui.xml", "assets/layouts/testLayout.xml", "assets/layouts/hamster.png", "assets/layouts/hamster.xml");
 
         (_bridgeGraphics.assetsManager).loadQueue(function(ratio:Number):void
             {
                 trace("Loading assets, progress:", ratio);
                 if (ratio == 1)
                 {
+                    //TO DO in StarlingEngine, tranzitionToState does not manage non finished animations!!!!!!
+                    //This needs to be fixed in order to have overlapping tranzitions
                     _stateTransition = new EngineStateTransition();
                     _stateTransition.injectAnimation(function(obj1:IAbstractDisplayObject, obj2:IAbstractDisplayObject):void{
                         obj2.y = -480;
@@ -141,9 +143,9 @@ public class Main extends Sprite {
                         TweenLite.to(obj2, .3, {y:0, ease:Cubic.easeOut});
                     })
 
-                    _loginState = new LoginState(_bridgeGraphics);
+                    /*_loginState = new LoginState(_bridgeGraphics);
                     _bridgeGraphics.tranzitionToState(_loginState, _stateTransition)
-
+                       */
                     initConnections();
                 }
             });
@@ -175,7 +177,7 @@ public class Main extends Sprite {
     private function simulationInit():void
     {
         _connectingToServerState = new ConnectingToNode(_bridgeGraphics);
-        _bridgeGraphics.tranzitionToState(_connectingToServerState, _stateTransition)
+        //_bridgeGraphics.tranzitionToState(_connectingToServerState, _stateTransition)
 
         _nodeSocket = new NodeSocket(SERVER_IP, SERVER_PORT, _id, _playerType, _playerCountry);
         _nodeSocket.connect(socketConnected, onDataReceived);
@@ -201,6 +203,7 @@ public class Main extends Sprite {
         _resourceGathering.workers = obj["data"]["miners"];
         _transporter.workers = obj["data"]["transporters"];
         _consumer.workers = obj["data"]["producers"];
+        _gameState.receivedInformation(_timer.totalTimeSpent, obj, _consumer.units);
     }
 
     private function feedServer():void
@@ -217,6 +220,7 @@ public class Main extends Sprite {
     {
         _errorState = new ErrorState(_bridgeGraphics);
         _bridgeGraphics.tranzitionToState(_errorState, _stateTransition);
+        _bridgeGraphics.addChild(_errorState);
     }
 }
 }

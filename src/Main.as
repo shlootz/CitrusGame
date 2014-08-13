@@ -6,6 +6,7 @@ import bridge.abstract.AbstractPool;
 import bridge.abstract.IAbstractDisplayObject;
 import bridge.abstract.IAbstractState;
 import bridge.abstract.transitions.IAbstractStateTransition;
+import bridge.abstract.ui.IAbstractButton;
 
 import com.greensock.TweenLite;
 import com.greensock.easing.Cubic;

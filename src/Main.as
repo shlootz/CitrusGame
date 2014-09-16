@@ -40,6 +40,11 @@ import gameGraphics.loginMenu.LoginState;
 import gameGraphics.preloader.Preloader;
 import gameGraphics.preloader.PreloaderState;
 
+import games.braid.BraidDemo;
+import games.hungryhero.com.hsharma.hungryHero.screens.InGame;
+import games.osmos.OsmosGameState;
+import games.tinywings.nape.TinyWingsGameState;
+
 import localStorage.SaveOrRetrieve;
 
 import nape.space.Space;
@@ -117,16 +122,19 @@ public class Main extends Sprite {
         initGraphics();
     }
 
+    private function initBraid():void
+    {
+        //_bridgeGraphics.tranzitionToState(new BraidDemo() as IAbstractState);
+        //_bridgeGraphics.tranzitionToState(new InGame() as IAbstractState);
+        _bridgeGraphics.tranzitionToState(new TinyWingsGameState() as IAbstractState);
+    }
+
     private function initGraphics():void{
         addChild(_bridgeGraphics.engine as DisplayObject);
         (_bridgeGraphics.signalsManager as ISignalsHub).addListenerToSignal(Signals.STARLING_READY, loadAssets);
     }
 
     private function loadAssets(event:String, obj:Object):void {
-        _loadingState = new PreloaderState(_bridgeGraphics);
-        _bridgeGraphics.tranzitionToState(_loadingState);
-
-        _bridgeGraphics.tranzitionToState(_loadingState);
 
         (_bridgeGraphics.assetsManager).enqueue("assets/ui.png", "assets/ui.xml", "assets/layouts/testLayout.xml", "assets/layouts/hamster.png", "assets/layouts/hamster.xml");
 
@@ -147,7 +155,8 @@ public class Main extends Sprite {
                     /*_loginState = new LoginState(_bridgeGraphics);
                     _bridgeGraphics.tranzitionToState(_loginState, _stateTransition)
                        */
-                    initConnections();
+                    //initConnections();
+                    initBraid();
                 }
             });
     }

@@ -228,7 +228,7 @@ public class GameState extends AbstractState{
                 if (object is DraggableCube) {
 
                     if (touchBegan)
-                        (object as DraggableCube).enableHolding(art, 0, 0);
+                        (object as DraggableCube).enableHolding(art, 0, 0, touchBegan.globalX, touchBegan.globalY);
                     else if (touchEnded)
                         (object as DraggableCube).disableHolding();
                 }

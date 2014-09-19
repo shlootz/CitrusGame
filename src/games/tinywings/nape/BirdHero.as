@@ -15,21 +15,25 @@ import objects.BadCube;
 import objects.DraggableCube;
 import objects.GoodCube;
 
+import signals.SignalsHub;
+
 /**
 	 * @author Alex Popescu
 	 */
 	public class BirdHero extends Hero {
 
 		public var jumpDecceleration:Number = 7;
-        public var life:uint = 100;
+        public var life:uint = 3;
 
 		private var _mobileInput:TouchInput;
 		private var _preListener:PreListener;
 
-		public function BirdHero(name:String, params:Object = null) {
+        private var _signalsManager:SignalsHub;
+
+		public function BirdHero(name:String, params:Object = null, signalsManager:SignalsHub = null) {
 
 			super(name, params);
-
+            _signalsManager = signalsManager;
 			//_mobileInput = new TouchInput();
 			//_mobileInput.initialize();
 		}
@@ -98,13 +102,27 @@ import objects.GoodCube;
 			if (callback.int2.userData.myData is Platform)
 				_onGround = true;
 
+            if(callback.int1.userData.myData is BadCube && callback.int2.userData.myData is BadCube) {
+                if((callback.int1.userData.myData as DraggableCube).grabbed) {
+                    _signalsManager.dispatchSignal("breakObject", "breakObject", {target: callback.int2.userData.myData});
+                    (callback.int1.userData.myData as DraggableCube).cubeLife --
+
+                    if((callback.int1.userData.myData as DraggableCube).cubeLife == 0)
+                    {
+                        _signalsManager.dispatchSignal("breakObject", "breakObject", {target: callback.int1.userData.myData});
+                    }
+                }
+            }
+
             if(callback.int1.userData.myData is BirdHero && callback.int2.userData.myData is BadCube) {
                 if (life > 0)
                 {
                     life--
+                    _signalsManager.dispatchSignal("breakObject", "breakObject", {target:callback.int2.userData.myData})
                 }
                 else
                 {
+                    _signalsManager.dispatchSignal("breakObject", "breakObject", {target:callback.int2.userData.myData})
                     die();
                 }
             }

@@ -25,7 +25,7 @@ import starling.textures.Texture;
 		private var _flagAdded:Boolean = false;
 
 		public function HillsTexture() {
-            //this.filter = new BlurFilter(5,0)
+
 		}
 		
 		public function init(sliceWidth:uint, sliceHeight:uint):void {
@@ -57,14 +57,14 @@ import starling.textures.Texture;
 		public function createSlice(rider:Body, nextYPoint:uint, currentYPoint:uint):void {
 			
 			var image:Image = new Image(_groundTexture);
-            image.height = Math.sin(rider.position.x / rider.position.y) * 10;
+            image.height = Math.sin(rider.position.x / rider.position.y);
 			addChild(image);
 			
 			_images.push(image);
 			
 			var matrix:Matrix = image.transformationMatrix;
             matrix.translate(rider.position.x , rider.position.y);
-            matrix.a = 1;
+            matrix.a = 1.04;
             matrix.b = (nextYPoint - currentYPoint) / _sliceWidth;
             image.transformationMatrix.copyFrom(matrix); 
 		}

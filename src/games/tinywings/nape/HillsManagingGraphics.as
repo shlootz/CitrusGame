@@ -9,13 +9,15 @@ package games.tinywings.nape {
 
 		public function HillsManagingGraphics(name:String, params:Object = null) {
 			super(name, params);
+            widthHills = 1250;
 		}
 	
 		override protected function _prepareSlices():void {
 
-			if (view)
-				(view as HillsTexture).init(sliceWidth, sliceHeight);
-				
+			if (view) {
+                (view as HillsTexture).init(sliceWidth, sliceHeight);
+            }
+
 			super._prepareSlices();
 		}
 
@@ -28,9 +30,9 @@ package games.tinywings.nape {
 		}
 
 		override protected function _deleteHill(index:uint):void {
-			
+
 			(view as HillsTexture).deleteHill(index);
-			
+
 			super._deleteHill(index);
 		}
 

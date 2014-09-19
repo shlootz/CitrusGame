@@ -1,6 +1,7 @@
 package objects {
  
 	import citrus.objects.NapePhysicsObject;
+import citrus.objects.vehicle.nape.Nugget;
 
 import games.tinywings.nape.BirdHero;
 
@@ -20,10 +21,14 @@ import starling.display.Quad;
 	public class DraggableCube extends NapePhysicsObject {
 
         public var grabbed:Boolean = false;
+        public var cubeLife:uint = 3;
 
-		private var _hand:PivotJoint;
-		private var _mouseScope:DisplayObject;
-        private var _hero:BirdHero;
+		protected var _hand:PivotJoint;
+        protected var _mouseScope:DisplayObject;
+        protected var _hero:BirdHero;
+
+        private var _touchOffsetX:Number;
+        private var _touchOffsetY:Number;
 
 		public function DraggableCube(name:String, params:Object = null, hero:BirdHero = null)
 		{
@@ -56,23 +61,24 @@ import starling.display.Quad;
 			super.update(timeDelta);
 			
 			if (_mouseScope) {
-                _hand.anchor1.setxy((_hero.x - 200 + _ce.stage.mouseX) / Starling.contentScaleFactor, (_hero.y - 250 + _ce.stage.mouseY) / Starling.contentScaleFactor);
+                _hand.anchor1.setxy((_hero.x + _ce.mouseX) / Starling.contentScaleFactor, (_hero.y + _ce.mouseY) / Starling.contentScaleFactor);
             }
-            if (this.y > _hero.y * 2)
+
+            if (this.x < _hero.x - 300)
                 this.kill = true;
 		}
  
-		public function enableHolding(mouseScope:DisplayObject, offsetX:Number, offsetY:Number):void {
- 
-			_mouseScope = mouseScope;
- 
-			var mp:Vec2 = new Vec2(x, y);
+		public function enableHolding(mouseScope:DisplayObject, offsetX:Number, offsetY:Number, touchX:Number, touchY:Number):void {
+
+            _mouseScope = mouseScope;
+
+            var mp:Vec2 = new Vec2(x, y);
             _hand.anchor2.set(_body.worldPointToLocal(mp, true));
             _hand.active = true;
             this.view = new Quad(this.width, this.height, 0xFF0000);
 
             grabbed = true;
-		}
+        }
  
 		public function disableHolding():void {
  

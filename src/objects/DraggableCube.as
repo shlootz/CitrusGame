@@ -4,7 +4,6 @@ package objects {
 import citrus.objects.vehicle.nape.Nugget;
 
 import games.tinywings.nape.BirdHero;
-import games.tinywings.nape.TouchInput;
 
 import nape.callbacks.InteractionCallback;
 	import nape.constraint.PivotJoint;
@@ -27,18 +26,16 @@ import starling.display.Quad;
 		protected var _hand:PivotJoint;
         protected var _mouseScope:DisplayObject;
         protected var _hero:BirdHero;
-        protected var _mobileInput:TouchInput;
 
         private var _touchOffsetX:Number;
         private var _touchOffsetY:Number;
 
-		public function DraggableCube(name:String, params:Object = null, hero:BirdHero = null, mobileInput:TouchInput = null)
+		public function DraggableCube(name:String, params:Object = null, hero:BirdHero = null)
 		{
 			super(name, params);
 			this.touchable = true;
 			this.updateCallEnabled = true;
             _hero = hero;
-            _mobileInput = mobileInput;
 		}
  
 		override protected function createConstraint():void {
@@ -64,10 +61,7 @@ import starling.display.Quad;
 			super.update(timeDelta);
 			
 			if (_mouseScope) {
-                this.x = _mobileInput.pos.x;
-                this.y = _mobileInput.pos.y;
-              // _hand.anchor1.setxy((_hero.x + _mobileInput.pos.x) / Starling.contentScaleFactor, (_hero.y + _mobileInput.pos.y) / Starling.contentScaleFactor);
-                //trace((_hero.x + _mobileInput.pos.x)+" "+(_hero.y + _mobileInput.pos.y)+" * "+Starling.contentScaleFactor);
+                _hand.anchor1.setxy((_hero.x + _ce.mouseX) / Starling.contentScaleFactor, (_hero.y + _ce.mouseY) / Starling.contentScaleFactor);
             }
 
             if (this.x < _hero.x - 300)
@@ -79,8 +73,8 @@ import starling.display.Quad;
             _mouseScope = mouseScope;
 
             var mp:Vec2 = new Vec2(x, y);
-            //_hand.anchor2.set(_body.worldPointToLocal(mp, true));
-            //_hand.active = true;
+            _hand.anchor2.set(_body.worldPointToLocal(mp, true));
+            _hand.active = true;
             this.view = new Quad(this.width, this.height, 0xFF0000);
 
             grabbed = true;

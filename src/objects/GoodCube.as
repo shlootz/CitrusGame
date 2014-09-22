@@ -5,13 +5,12 @@ package objects {
 import com.greensock.TweenLite;
 
 import games.tinywings.nape.BirdHero;
-import games.tinywings.nape.TouchInput;
 
 import starling.core.Starling;
 
 public class GoodCube extends DraggableCube{
-    public function GoodCube(name:String, params:Object = null, hero:BirdHero = null, touchInput:TouchInput = null) {
-        super (name, params, hero, touchInput);
+    public function GoodCube(name:String, params:Object = null, hero:BirdHero = null) {
+        super (name, params, hero);
     }
 
     public function destroyCube():void

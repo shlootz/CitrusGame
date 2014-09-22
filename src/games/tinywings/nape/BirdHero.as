@@ -52,7 +52,7 @@ import signals.SignalsHub;
             body.allowRotation = true;
 			var velocity:Vec2 = _body.velocity;
 			
-			velocity.x = 5;
+			velocity.x = 200;
 			
 		/*	if (_mobileInput.screenTouched) {
 

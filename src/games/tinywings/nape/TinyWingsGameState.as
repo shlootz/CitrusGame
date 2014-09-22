@@ -65,7 +65,9 @@ import starlingEngine.elements.EngineState;
 
 		[Embed(source="/../embed/1x/heroMobile.png")]
 		public static const HeroPng:Class;
-		
+
+        private var _mobileInput:TouchInput;
+
 		private var _nape:Nape;
 		private var _hero:BirdHero;
         private var _distance:int = 0;
@@ -139,6 +141,8 @@ import starlingEngine.elements.EngineState;
             _draggableCubesPool = new AbstractPool("draggableCubes", DraggableCube, 1000, "smallCube", null, _hero);
 
             //add(new TerrainHolder(_nape));
+            _mobileInput = new TouchInput();
+            _mobileInput.initialize();
 		}
 
 		override public function update(timeDelta:Number):void {
@@ -157,18 +161,21 @@ import starlingEngine.elements.EngineState;
 
                 trace(generate);
 
-                if(generate == 0)
+                add(new BadCube("cube" + Math.random() * 99999, { view: new Quad(size, size, 0x000000), width: size, height: size, x: _hero.x + 1000 + Math.random()*300, y: _hero.y - 600}, _hero, _mobileInput));
+
+
+                /*if(generate == 0)
                 {
-                    add(new BadCube("cube" + Math.random() * 99999, { view: new Quad(size, size, 0x000000), width: size, height: size, x: _hero.x + 1000 + Math.random()*300, y: _hero.y - 600}, _hero));
+                    add(new BadCube("cube" + Math.random() * 99999, { view: new Quad(size, size, 0x000000), width: size, height: size, x: _hero.x + 1000 + Math.random()*300, y: _hero.y - 600}, _hero, _mobileInput));
                 }
                 if(generate == 1)
                 {
-                    add(new BulletCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0x00FF00), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero));
+                    add(new BulletCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0x00FF00), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero, _mobileInput));
                 }
                 if(generate == 2)
                 {
-                    add(new GoodCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0xFF0000), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero));
-                }
+                    add(new GoodCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0xFF0000), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero,_mobileInput));
+                }*/
             }
 
             _distance = _hero.x;
@@ -191,7 +198,7 @@ import starlingEngine.elements.EngineState;
             var touchMoved:Touch = tEvt.getTouch(this, TouchPhase.MOVED);
             var touchEnded:Touch = tEvt.getTouch(this, TouchPhase.ENDED);
 
-            if (art && (touchBegan || touchEnded)) {
+            if (art && (touchBegan || touchEnded || touchMoved)) {
 
                 var object:CitrusObject = (view.getObjectFromArt(art)) as CitrusObject;
 
@@ -200,13 +207,18 @@ import starlingEngine.elements.EngineState;
                     if (object is DraggableCube) {
 
                         if (touchBegan) {
-                            (object as DraggableCube).enableHolding(art, _hero.x, _hero.y, touchBegan.globalX, touchBegan.globalY);
+                            //(object as DraggableCube).enableHolding(art, _hero.x, _hero.y, touchBegan.globalX, touchBegan.globalY);
                             //_signalsManager.dispatchSignal("grabbedObject", "grabbedObject", {target:object})
                         }
 
                         if (touchEnded){
                             (object as DraggableCube).disableHolding();
                             //_signalsManager.dispatchSignal("droppedObject", "droppedObject", {target:object})
+                        }
+
+                        if(touchMoved){
+                            (object as DraggableCube).enableHolding(art, _hero.x, _hero.y, _mobileInput.pos.x, _mobileInput.pos.y);
+                            _signalsManager.dispatchSignal("grabbedObject", "grabbedObject", {target:object})
                         }
                     }
                 }
@@ -221,8 +233,8 @@ import starlingEngine.elements.EngineState;
             var posX:uint = target.x;
             var posY:uint = target.y;
 
-            var pieces:uint = Math.random()*100;
-            var piecesSize:uint = (2+w/pieces)*2;
+            var pieces:uint = 20+Math.random()*80;
+            var piecesSize:uint = 5+Math.random()*10;
 
             var piecesW:uint = Math.sqrt(pieces);
             var piecesH:uint = Math.sqrt(pieces);

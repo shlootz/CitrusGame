@@ -4,7 +4,9 @@ package games.tinywings.nape {
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.input.Input;
 
-	import starling.events.Touch;
+import flash.geom.Point;
+
+import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 
@@ -47,13 +49,23 @@ package games.tinywings.nape {
 			(_ce as StarlingCitrusEngine).starling.stage.addEventListener(TouchEvent.TOUCH, _touchEvent);
 		}
 
+        public var pos:Point = new Point();
+
 		private function _touchEvent(tEvt:TouchEvent):void {
-						
+
 			var touchStart:Touch = tEvt.getTouch((_ce as StarlingCitrusEngine).starling.stage, TouchPhase.BEGAN);
 			var touchEnd:Touch = tEvt.getTouch((_ce as StarlingCitrusEngine).starling.stage, TouchPhase.ENDED);
+            var touchMove:Touch = tEvt.getTouch((_ce as StarlingCitrusEngine).starling.stage, TouchPhase.MOVED)
 
-			if (touchStart)
-				_screenTouched = true;
+            if (touchMove) {
+                _screenTouched = true;
+                pos.x = touchMove.globalX;
+                pos.y = touchMove.globalY;
+            }
+
+			if (touchStart) {
+                _screenTouched = true;
+            }
 			
 			if (touchEnd)
 				_screenTouched = false;

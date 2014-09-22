@@ -3,12 +3,13 @@
  */
 package objects {
 import games.tinywings.nape.BirdHero;
+import games.tinywings.nape.TouchInput;
 
 import starling.core.Starling;
 
 public class BulletCube extends BadCube{
-    public function BulletCube(name:String, params:Object = null, hero:BirdHero = null) {
-        super(name, params, hero)
+    public function BulletCube(name:String, params:Object = null, hero:BirdHero = null, touchInput:TouchInput = null) {
+        super(name, params, hero, touchInput)
     }
 
     override public function update(timeDelta:Number):void {

@@ -4,13 +4,20 @@
 package objects {
 import com.greensock.TweenLite;
 
+import flash.display.Bitmap;
+
 import games.tinywings.nape.BirdHero;
 
+import nape.geom.Vec2;
+
+import signals.SignalsHub;
+
 import starling.core.Starling;
+import starling.display.DisplayObject;
 
 public class GoodCube extends DraggableCube{
-    public function GoodCube(name:String, params:Object = null, hero:BirdHero = null) {
-        super (name, params, hero);
+    public function GoodCube(name:String, params:Object = null, hero:BirdHero = null, view:Bitmap = null, signalsManager:SignalsHub = null) {
+        super (name, params, hero, view, signalsManager);
     }
 
     public function destroyCube():void
@@ -33,5 +40,6 @@ public class GoodCube extends DraggableCube{
         if (this.x < _hero.x - 300)
             this.kill = true;
     }
-}
+
+    }
 }

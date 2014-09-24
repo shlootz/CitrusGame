@@ -1,7 +1,13 @@
 package objects {
- 
-	import citrus.objects.NapePhysicsObject;
+
+import Box2D.Common.Math.b2Vec2;
+
+import citrus.objects.NapePhysicsObject;
 import citrus.objects.vehicle.nape.Nugget;
+
+import com.pzuh.utils.Basic;
+
+import flash.display.Bitmap;
 
 import games.tinywings.nape.BirdHero;
 
@@ -11,9 +17,13 @@ import nape.callbacks.InteractionCallback;
 	import nape.geom.Vec3;
 import nape.phys.MassMode;
 
+import signals.SignalsHub;
+
 import starling.core.Starling;
 	import starling.display.DisplayObject;
+import starling.display.Image;
 import starling.display.Quad;
+import starling.textures.Texture;
 
 /**
 	 * @author Aymeric
@@ -26,16 +36,32 @@ import starling.display.Quad;
 		protected var _hand:PivotJoint;
         protected var _mouseScope:DisplayObject;
         protected var _hero:BirdHero;
+        protected var _viewBitmap:Bitmap;
 
         private var _touchOffsetX:Number;
         private var _touchOffsetY:Number;
 
-		public function DraggableCube(name:String, params:Object = null, hero:BirdHero = null)
+        private var _signalsManager:SignalsHub;
+
+		public function DraggableCube(name:String, params:Object = null, hero:BirdHero = null, viewBmp:Bitmap = null, signalsManager:SignalsHub = null)
 		{
 			super(name, params);
 			this.touchable = true;
 			this.updateCallEnabled = true;
+            this.rotation = Math.random()*360;
             _hero = hero;
+            _viewBitmap = viewBmp;
+            _signalsManager = signalsManager;
+
+            if(viewBmp != null) {
+                var texture:Texture = Texture.fromBitmap(viewBmp);
+                var img:Image = new Image(texture);
+
+                this.view = img;
+                this.view.width = this.width;
+                this.view.height = this.height;
+            }
+
 		}
  
 		override protected function createConstraint():void {
@@ -60,22 +86,42 @@ import starling.display.Quad;
  
 			super.update(timeDelta);
 			
-			if (_mouseScope) {
-                _hand.anchor1.setxy((_hero.x + _ce.mouseX) / Starling.contentScaleFactor, (_hero.y + _ce.mouseY) / Starling.contentScaleFactor);
+			/*if (_mouseScope) {
+                _hand.anchor1.setxy((_ce.mouseX) / Starling.contentScaleFactor, (_ce.mouseY) / Starling.contentScaleFactor);
             }
-
+             */
             if (this.x < _hero.x - 300)
-                this.kill = true;
+                recycleMe();
+
 		}
+
+        public function recycleMe():void
+        {
+            var o:Object = {
+                target:this
+            }
+            _signalsManager.dispatchSignal("recycleObject", "recycle", o)
+        }
+
+        public function killMe():void
+        {
+            kill = true;
+        }
  
 		public function enableHolding(mouseScope:DisplayObject, offsetX:Number, offsetY:Number, touchX:Number, touchY:Number):void {
 
             _mouseScope = mouseScope;
 
-            var mp:Vec2 = new Vec2(x, y);
-            _hand.anchor2.set(_body.worldPointToLocal(mp, true));
-            _hand.active = true;
-            this.view = new Quad(this.width, this.height, 0xFF0000);
+            //var angle:Number = Basic.getPointAngle(_hero.x, _hero.y, x, y);
+
+            var angle:Number = rotation;
+
+            rotation = Basic.radianToDegree(angle);
+
+            var xDir:Number = Math.cos(angle) * 20000;
+            var yDir:Number = Math.sin(angle) * 20000;
+
+            this.body.applyImpulse(new Vec2(xDir, yDir));
 
             grabbed = true;
         }
@@ -84,7 +130,7 @@ import starling.display.Quad;
  
 			_hand.active = false;
 			_mouseScope = null;
-            grabbed = false;
+            //grabbed = false;
 		}
  
 	}

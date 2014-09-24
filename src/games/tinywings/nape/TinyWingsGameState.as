@@ -65,6 +65,15 @@ import starlingEngine.elements.EngineState;
 
 		[Embed(source="/../embed/1x/heroMobile.png")]
 		public static const HeroPng:Class;
+
+        [Embed(source="/../embed/squareBlack.png")]
+        public static const SquareBlack:Class;
+
+        [Embed(source="/../embed/squareBlue.png")]
+        public static const SquareBlue:Class;
+
+        [Embed(source="/../embed/squareGreen.jpg")]
+        public static const SquareGreen:Class;
 		
 		private var _nape:Nape;
 		private var _hero:BirdHero;
@@ -80,6 +89,10 @@ import starlingEngine.elements.EngineState;
         private var _grabbedObjects:Array = new Array();
 
         private var _draggableCubesPool:AbstractPool;
+
+        private var _square1:Bitmap = new SquareBlack();
+        private var _square2:Bitmap = new SquareBlue();
+        private var _square3:Bitmap = new SquareGreen();
 
 		public function TinyWingsGameState() {
 			super();
@@ -97,9 +110,13 @@ import starlingEngine.elements.EngineState;
             var anchorsDropped:Vector.<Function> = new Vector.<Function>();
             anchorsDropped.push(onDroppedObject);
 
+            var recycleCaught:Vector.<Function> = new Vector.<Function>();
+            recycleCaught.push(onRecycle);
+
             _signalsManager.addSignal("breakObject", new Signal(), anchors);
             _signalsManager.addSignal("grabbedObject", new Signal(), anchorsGrabbed);
             _signalsManager.addSignal("droppedObject", new Signal(), anchorsDropped)
+            _signalsManager.addSignal("recycleObject", new Signal(), recycleCaught)
 
             _textField = new TextField(300,20,"0");
             _lifeTextField = new TextField(300,20,"100");
@@ -136,7 +153,7 @@ import starlingEngine.elements.EngineState;
 
             stage.addEventListener(TouchEvent.TOUCH, _handleTouch);
 
-            _draggableCubesPool = new AbstractPool("draggableCubes", DraggableCube, 1000, "smallCube", null, _hero);
+            _draggableCubesPool = new AbstractPool("draggableCubes", DraggableCube, 1000, "smallCube", null, _hero, null, _signalsManager);
 
             //add(new TerrainHolder(_nape));
 		}
@@ -159,15 +176,18 @@ import starlingEngine.elements.EngineState;
 
                 if(generate == 0)
                 {
-                    add(new BadCube("cube" + Math.random() * 99999, { view: new Quad(size, size, 0x000000), width: size, height: size, x: _hero.x + 1000 + Math.random()*300, y: _hero.y - 600}, _hero));
+                    //TODO -> MAKE A CUSTOM POOL FOR DRAGGABLE CUBE : http://forum.starling-framework.org/topic/how-to-use-citrusspritepool-1
+                    add(new BadCube("cube" + Math.random() * 99999, { view: new Quad(size, size, 0x000000), width: size, height: size, x: _hero.x + 1000 + Math.random()*300, y: _hero.y - 600}, _hero, _square1, _signalsManager));
                 }
                 if(generate == 1)
                 {
-                    add(new BulletCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0x00FF00), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero));
+                    //TODO -> MAKE A CUSTOM POOL FOR DRAGGABLE CUBE : http://forum.starling-framework.org/topic/how-to-use-citrusspritepool-1
+                    add(new BulletCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0x00FF00), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero, _square2, _signalsManager));
                 }
                 if(generate == 2)
                 {
-                    add(new GoodCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0xFF0000), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero));
+                    //TODO -> MAKE A CUSTOM POOL FOR DRAGGABLE CUBE : http://forum.starling-framework.org/topic/how-to-use-citrusspritepool-1
+                    add(new GoodCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0xFF0000), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero, _square3, _signalsManager));
                 }
             }
 
@@ -213,6 +233,12 @@ import starlingEngine.elements.EngineState;
             }
         }
 
+        private function onRecycle(type:String, obj:Object):void
+        {
+            _draggableCubesPool.returnToPool(obj["target"]);
+            remove(obj["target"]);
+        }
+
         private function onBreakObject(type:String, obj:Object):void
         {
             var target:BadCube = obj["target"] as BadCube;
@@ -231,9 +257,10 @@ import starlingEngine.elements.EngineState;
             {
                 for(var j:uint = 0; j<piecesH; j++)
                 {
-                    var smallCube:DraggableCube = new DraggableCube("smallCube" + i+j, { view: new Quad(piecesSize, piecesSize, 0x000000), width: piecesSize, height: piecesSize, x: _hero.x + 1000, y: _hero.y - 400}, _hero);
+                    //TODO -> MAKE A SIMPLE DEBRIS OBJECT, NOT A DRAGGABLE CUBE
+                    var smallCube:DraggableCube = new DraggableCube("smallCube" + i+j, { view: new Quad(piecesSize, piecesSize, 0x000000), width: piecesSize, height: piecesSize, x: _hero.x + 1000, y: _hero.y - 400}, _hero, null, _signalsManager);
                     //var smallCube:DraggableCube = _draggableCubesPool.getNewObject() as DraggableCube;
-                    //smallCube.view = new Quad(piecesSize, piecesSize, 0x000000);
+                    //smallCube.view = new Quad(smallCube.width, smallCube.height, 0x000000);
                     //smallCube.width = piecesSize;
                     //smallCube.height = piecesSize;
                     //smallCube.x = _hero.x + 1000;

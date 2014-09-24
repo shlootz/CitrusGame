@@ -9,7 +9,7 @@ package games.tinywings.nape {
 
 		public function HillsManagingGraphics(name:String, params:Object = null) {
 			super(name, params);
-            widthHills = 1250;
+            widthHills = 2500;
 		}
 	
 		override protected function _prepareSlices():void {

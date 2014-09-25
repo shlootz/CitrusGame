@@ -3,6 +3,7 @@
  */
 package objects {
 import com.greensock.TweenLite;
+import com.pzuh.utils.Basic;
 
 import flash.display.Bitmap;
 
@@ -39,6 +40,24 @@ public class GoodCube extends DraggableCube{
         }
         if (this.x < _hero.x - 300)
             this.kill = true;
+    }
+
+    override public function enableHolding(mouseScope:DisplayObject, offsetX:Number, offsetY:Number, touchX:Number, touchY:Number):void {
+
+        _mouseScope = mouseScope;
+
+        var angle:Number = Basic.getPointAngle(_hero.x, _hero.y, x, y);
+
+        //var angle:Number = rotation;
+
+        rotation = Basic.radianToDegree(angle);
+
+        var xDir:Number = Math.cos(angle) * 20000;
+        var yDir:Number = Math.sin(angle) * 20000;
+
+        this.body.applyImpulse(new Vec2(xDir, yDir));
+
+        grabbed = true;
     }
 
     }

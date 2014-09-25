@@ -30,6 +30,7 @@ import objects.BadCube;
 import objects.BulletCube;
 
 import objects.DraggableCube;
+import objects.FatCube;
 import objects.GoodCube;
 import objects.Terrain;
 import objects.TerrainHolder;
@@ -170,9 +171,7 @@ import starlingEngine.elements.EngineState;
             if (_step % 37 == 0) {
 
                 var size:uint = 10+Math.random()*200;
-                var generate:int = int(Math.random()*3);
-
-                trace(generate);
+                var generate:int = int(Math.random()*4);
 
                 if(generate == 0)
                 {
@@ -188,6 +187,10 @@ import starlingEngine.elements.EngineState;
                 {
                     //TODO -> MAKE A CUSTOM POOL FOR DRAGGABLE CUBE : http://forum.starling-framework.org/topic/how-to-use-citrusspritepool-1
                     add(new GoodCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0xFF0000), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero, _square3, _signalsManager));
+                }
+                if(generate == 3) {
+                    //TODO -> MAKE BOSS BATTLE
+                    add(new FatCube("cube" + Math.random() * 99999, { view: new Quad(500, 500, 0x000000), width: 500, height: 500, x: _hero.x + 1000 + Math.random() * 300, y: _hero.y - 600}, _hero, _square1, _signalsManager));
                 }
             }
 

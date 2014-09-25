@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e851299-2b18-4f09-8bb0-5ebe63af7e47" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/objects/FatCube.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/BadCube.as" afterPath="$PROJECT_DIR$/src/objects/BadCube.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/games/tinywings/nape/BirdHero.as" afterPath="$PROJECT_DIR$/src/games/tinywings/nape/BirdHero.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/BulletCube.as" afterPath="$PROJECT_DIR$/src/objects/BulletCube.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/DraggableCube.as" afterPath="$PROJECT_DIR$/src/objects/DraggableCube.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/GoodCube.as" afterPath="$PROJECT_DIR$/src/objects/GoodCube.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/games/tinywings/nape/HillsManagingGraphics.as" afterPath="$PROJECT_DIR$/src/games/tinywings/nape/HillsManagingGraphics.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/games/tinywings/nape/TinyWingsGameState.as" afterPath="$PROJECT_DIR$/src/games/tinywings/nape/TinyWingsGameState.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -35,7 +33,7 @@
       <file leaf-file-name="Main.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1181" max-vertical-offset="2625">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2520" max-vertical-offset="3630">
               <caret line="168" column="35" selection-start-line="168" selection-start-column="34" selection-end-line="168" selection-end-column="35" />
               <folding />
             </state>
@@ -45,11 +43,9 @@
       <file leaf-file-name="TinyWingsGameState.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/games/tinywings/nape/TinyWingsGameState.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7530266" vertical-offset="2509" max-vertical-offset="4470">
-              <caret line="188" column="141" selection-start-line="188" selection-start-column="141" selection-end-line="188" selection-end-column="141" />
-              <folding>
-                <element signature="e#32#68#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="6.7995443" vertical-offset="0" max-vertical-offset="3705">
+              <caret line="253" column="48" selection-start-line="253" selection-start-column="34" selection-end-line="253" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -77,8 +73,8 @@
       <file leaf-file-name="BirdHero.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/games/tinywings/nape/BirdHero.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1665" max-vertical-offset="2295">
-              <caret line="111" column="67" selection-start-line="111" selection-start-column="56" selection-end-line="111" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1331" max-vertical-offset="2070">
+              <caret line="120" column="118" selection-start-line="120" selection-start-column="89" selection-end-line="120" selection-end-column="118" />
               <folding />
             </state>
           </provider>
@@ -87,9 +83,21 @@
       <file leaf-file-name="DraggableCube.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/objects/DraggableCube.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.846154" vertical-offset="0" max-vertical-offset="1785">
-              <caret line="47" column="30" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="1785">
+              <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FatCube.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/objects/FatCube.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="585">
+              <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+              <folding>
+                <element signature="e#57#85#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -98,7 +106,7 @@
         <entry file="file://$PROJECT_DIR$/src/objects/BulletCube.as">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
-              <caret line="28" column="27" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="27" />
+              <caret line="39" column="5" selection-start-line="31" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -107,8 +115,8 @@
       <file leaf-file-name="GoodCube.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/objects/GoodCube.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="765">
-              <caret line="41" column="5" selection-start-line="32" selection-start-column="3" selection-end-line="41" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1050">
+              <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -117,8 +125,8 @@
       <file leaf-file-name="BadCube.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/objects/BadCube.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="675">
-              <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="705">
+              <caret line="49" column="9" selection-start-line="46" selection-start-column="8" selection-end-line="49" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -177,10 +185,11 @@
         <option value="$PROJECT_DIR$/src/games/tinywings/nape/BirdHero.as" />
         <option value="$PROJECT_DIR$/src/games/tinywings/nape/HillsManagingGraphics.as" />
         <option value="$PROJECT_DIR$/src/objects/BulletCube.as" />
-        <option value="$PROJECT_DIR$/src/objects/GoodCube.as" />
-        <option value="$PROJECT_DIR$/src/objects/BadCube.as" />
-        <option value="$PROJECT_DIR$/src/objects/DraggableCube.as" />
         <option value="$PROJECT_DIR$/src/CitrusObjectPool.as" />
+        <option value="$PROJECT_DIR$/src/objects/BadCube.as" />
+        <option value="$PROJECT_DIR$/src/objects/GoodCube.as" />
+        <option value="$PROJECT_DIR$/src/objects/DraggableCube.as" />
+        <option value="$PROJECT_DIR$/src/objects/FatCube.as" />
         <option value="$PROJECT_DIR$/src/games/tinywings/nape/TinyWingsGameState.as" />
       </list>
     </option>
@@ -218,8 +227,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,8 +259,28 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CitrusGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CitrusGame" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="objects" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,15 +309,15 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="CreateActionScriptClassDialog.DESTINATION_PACKAGE_RECENT_KEY">
-      <recent name="" />
       <recent name="objects" />
+      <recent name="" />
       <recent name="gameGraphics.error" />
       <recent name="gameGraphics.game" />
       <recent name="gameGraphics.connecting" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Flash App.CitrusGame">
@@ -794,11 +821,13 @@
       <workItem from="1411556230262" duration="67000" />
       <workItem from="1411562081260" duration="1069000" />
       <workItem from="1411565960228" duration="1284000" />
+      <workItem from="1411644568329" duration="1272000" />
+      <workItem from="1411671774855" duration="1449000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142888000" />
+    <option name="totallyTimeSpent" value="145609000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -837,7 +866,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29160306" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28854963" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1171,15 +1200,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2439" max-vertical-offset="3030">
           <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/games/tinywings/nape/BirdHero.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1665" max-vertical-offset="2295">
-          <caret line="111" column="67" selection-start-line="111" selection-start-column="56" selection-end-line="111" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1199,38 +1219,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/GoodCube.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="570">
-          <caret line="41" column="5" selection-start-line="32" selection-start-column="3" selection-end-line="41" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/BadCube.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/DraggableCube.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.846154" vertical-offset="0" max-vertical-offset="1785">
-          <caret line="47" column="30" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/BulletCube.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="555">
-          <caret line="28" column="27" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.as">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2520" max-vertical-offset="3630">
@@ -1239,13 +1227,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/GoodCube.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="461" max-vertical-offset="1020">
+          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/BulletCube.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+          <caret line="39" column="5" selection-start-line="31" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/BadCube.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="705">
+          <caret line="49" column="9" selection-start-line="46" selection-start-column="8" selection-end-line="49" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/DraggableCube.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1135" max-vertical-offset="1785">
+          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/FatCube.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="585">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+          <folding>
+            <element signature="e#57#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/games/tinywings/nape/BirdHero.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1331" max-vertical-offset="2070">
+          <caret line="120" column="118" selection-start-line="120" selection-start-column="89" selection-end-line="120" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/games/tinywings/nape/TinyWingsGameState.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7530266" vertical-offset="2509" max-vertical-offset="4470">
-          <caret line="188" column="141" selection-start-line="188" selection-start-column="141" selection-end-line="188" selection-end-column="141" />
-          <folding>
-            <element signature="e#32#68#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="6.7995443" vertical-offset="0" max-vertical-offset="3705">
+          <caret line="253" column="48" selection-start-line="253" selection-start-column="34" selection-end-line="253" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

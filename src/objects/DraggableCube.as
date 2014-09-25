@@ -41,7 +41,7 @@ import starling.textures.Texture;
         private var _touchOffsetX:Number;
         private var _touchOffsetY:Number;
 
-        private var _signalsManager:SignalsHub;
+        protected var _signalsManager:SignalsHub;
 
 		public function DraggableCube(name:String, params:Object = null, hero:BirdHero = null, viewBmp:Bitmap = null, signalsManager:SignalsHub = null)
 		{

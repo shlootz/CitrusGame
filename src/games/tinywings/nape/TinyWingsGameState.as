@@ -32,6 +32,8 @@ import objects.BulletCube;
 import objects.DraggableCube;
 import objects.FatCube;
 import objects.GoodCube;
+import objects.Map;
+import objects.MappableObject;
 import objects.Terrain;
 import objects.TerrainHolder;
 
@@ -82,6 +84,7 @@ import starlingEngine.elements.EngineState;
         private var _textField:TextField;
         private var _lifeTextField:TextField;
         private var _signalsManager:SignalsHub = new SignalsHub();
+        private var _map:Map = new Map();
 		
 		private var _hillsTexture:HillsTexture;
 
@@ -168,7 +171,9 @@ import starlingEngine.elements.EngineState;
 
             _step++
 
-            if (_step % 37 == 0) {
+            generateEnemy();
+
+            /*if (_step % 37 == 0) {
 
                 var size:uint = 10+Math.random()*200;
                 var generate:int = int(Math.random()*4);
@@ -192,10 +197,11 @@ import starlingEngine.elements.EngineState;
                     //TODO -> MAKE BOSS BATTLE
                     add(new FatCube("cube" + Math.random() * 99999, { view: new Quad(500, 500, 0x000000), width: 500, height: 500, x: _hero.x + 1000 + Math.random() * 300, y: _hero.y - 600}, _hero, _square1, _signalsManager));
                 }
-            }
+            }*/
 
-            _distance = _hero.x;
+            _distance ++;
             _textField.text = String(_distance);
+            _map.distance = _distance;
             _lifeTextField.text = String(_hero.life);
 
             if(_grabbedObjects.length > 4)
@@ -203,6 +209,36 @@ import starlingEngine.elements.EngineState;
                 _hero.body.velocity.x = 300;
             }
            // view.camera.rotate(view.camera.getRotation()+2);
+        }
+
+        private function generateEnemy():void
+        {
+            var mO:MappableObject = _map.generateEnemy();
+            if(mO != null)
+            {
+                var size:uint;
+                switch (mO.type){
+                    case Map.ENEMY_AI_TYPE_1:
+                        size = 10+Math.random()*200;
+                        add(new BadCube("cube" + Math.random() * 99999, { view: new Quad(size, size, 0x000000), width: size, height: size, x: _hero.x + 1300 + Math.random()*300, y: _hero.y - 600}, _hero, _square1, _signalsManager));
+                        break;
+
+                    case Map.ENEMY_AI_TYPE_2:
+                        size = 10+Math.random()*200;
+                        add(new BulletCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0x00FF00), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero, _square2, _signalsManager));
+                        break;
+
+                    case Map.ENEMY_AI_TYPE_3:
+                        size = 500;
+                        add(new FatCube("cube" + Math.random() * 99999, { view: new Quad(500, 500, 0x000000), width: 500, height: 500, x: _hero.x + 1000 + Math.random() * 300, y: _hero.y - 600}, _hero, _square1, _signalsManager));
+                        break;
+
+                    case Map.POWERUP_TYPE_1:
+                        size = 10+Math.random()*200;
+                        add(new GoodCube("cube" + Math.random() * 99999, { view: new Quad(100, 100, 0xFF0000), width: 100, height: 100, x: _hero.x + 1000 + Math.random()*500, y: _hero.y - 400}, _hero, _square3, _signalsManager));
+                        break;
+                }
+            }
         }
 
         private function _handleTouch(tEvt:TouchEvent):void

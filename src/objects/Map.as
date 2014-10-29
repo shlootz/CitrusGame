@@ -4,6 +4,8 @@
 package objects {
 import flash.utils.Dictionary;
 
+import starling.display.Quad;
+
 import starling.display.Sprite;
 
 public class Map extends Sprite{
@@ -21,12 +23,16 @@ public class Map extends Sprite{
     private var _enemyFrequencyStep1:uint = 200;
     private var _mapDictionary:Dictionary = new Dictionary(true);
 
+    private var _enemiesOnMap:Vector.<Quad> = new Vector.<Quad>();
+
     public function Map() {
         mapEnemies();
     }
 
     public function generateEnemy():MappableObject
     {
+        update();
+
         var answer:MappableObject = null;
 
         if(_mapDictionary[distance] != null)
@@ -34,7 +40,40 @@ public class Map extends Sprite{
             answer = _mapDictionary[distance];
         }
 
+        if(_mapDictionary[distance+300] != null)
+        {
+            showEnemyOnMap()
+        }
+
         return answer;
+    }
+
+    private function update():void
+    {
+        if(_enemiesOnMap.length > 0)
+        {
+            for(var i:uint = 0; i<_enemiesOnMap.length; i++)
+            {
+                if(_enemiesOnMap[i].x > 0)
+                {
+                    _enemiesOnMap[i].x --;
+                }
+                else
+                {
+                    removeChild(_enemiesOnMap[i])
+                    _enemiesOnMap.shift();
+                }
+            }
+        }
+    }
+
+    private function showEnemyOnMap():void
+    {
+        var enemy:Quad = new Quad(20,20, 0xFF0000, false);
+        enemy.x = 800;
+        enemy.y = 450;
+        addChild(enemy);
+        _enemiesOnMap.push(enemy);
     }
 
     public function clearMap():void
@@ -67,5 +106,7 @@ public class Map extends Sprite{
             _mapDictionary[i] = mObject;
         }
     }
+
+
 }
 }

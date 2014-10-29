@@ -57,7 +57,8 @@ import starling.textures.Texture;
 		public function createSlice(rider:Body, nextYPoint:uint, currentYPoint:uint):void {
 			
 			var image:Image = new Image(_groundTexture);
-            image.height = Math.sin(rider.position.x / rider.position.y);
+            //image.height = Math.sin(rider.position.x / rider.position.y);
+            image.height = 500;
 			addChild(image);
 			
 			_images.push(image);
@@ -66,7 +67,7 @@ import starling.textures.Texture;
             matrix.translate(rider.position.x , rider.position.y);
             matrix.a = 1.04;
             matrix.b = (nextYPoint - currentYPoint) / _sliceWidth;
-            image.transformationMatrix.copyFrom(matrix); 
+            image.transformationMatrix.copyFrom(matrix);
 		}
 		
 		public function deleteHill(index:uint):void {

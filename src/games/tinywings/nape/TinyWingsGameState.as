@@ -1,13 +1,17 @@
 package games.tinywings.nape {
 
 import bridge.abstract.AbstractPool;
+import bridge.abstract.IAbstractSprite;
 import bridge.abstract.IAbstractTextField;
+import bridge.abstract.ui.IAbstractLabel;
 
 import citrus.core.CitrusObject;
 import citrus.core.starling.StarlingState;
 	import citrus.physics.nape.Nape;
 	import citrus.view.starlingview.AnimationSequence;
 	import citrus.view.starlingview.StarlingArt;
+
+import com.greensock.TweenLite;
 
 import flash.display.BitmapData;
 import flash.display.BitmapDataChannel;
@@ -34,6 +38,7 @@ import objects.FatCube;
 import objects.GoodCube;
 import objects.Map;
 import objects.MappableObject;
+import objects.SmallScore;
 import objects.Terrain;
 import objects.TerrainHolder;
 
@@ -56,7 +61,10 @@ import starling.textures.Texture;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 
+import starlingEngine.elements.EngineLabel;
+
 import starlingEngine.elements.EngineState;
+import starlingEngine.elements.EngineTextField;
 
 /**
 	 * @author Alex Popescu
@@ -98,6 +106,8 @@ import starlingEngine.elements.EngineState;
         private var _square2:Bitmap = new SquareBlue();
         private var _square3:Bitmap = new SquareGreen();
 
+        private var _hud:HUD = new HUD();
+
 		public function TinyWingsGameState() {
 			super();
 		}
@@ -117,10 +127,14 @@ import starlingEngine.elements.EngineState;
             var recycleCaught:Vector.<Function> = new Vector.<Function>();
             recycleCaught.push(onRecycle);
 
+            var showSmallCaught:Vector.<Function> = new Vector.<Function>();
+            showSmallCaught.push(onShowSmallScore);
+
             _signalsManager.addSignal("breakObject", new Signal(), anchors);
             _signalsManager.addSignal("grabbedObject", new Signal(), anchorsGrabbed);
-            _signalsManager.addSignal("droppedObject", new Signal(), anchorsDropped)
-            _signalsManager.addSignal("recycleObject", new Signal(), recycleCaught)
+            _signalsManager.addSignal("droppedObject", new Signal(), anchorsDropped);
+            _signalsManager.addSignal("recycleObject", new Signal(), recycleCaught);
+            _signalsManager.addSignal("showSmallSCore", new Signal(), showSmallCaught);
 
             _textField = new TextField(300,20,"0");
             _lifeTextField = new TextField(300,20,"100");
@@ -159,6 +173,8 @@ import starlingEngine.elements.EngineState;
 
             _draggableCubesPool = new AbstractPool("draggableCubes", DraggableCube, 1000, "smallCube", null, _hero, null, _signalsManager);
 
+            addChild(_map);
+            addChild(_hud);
             //add(new TerrainHolder(_nape));
 		}
 
@@ -278,6 +294,28 @@ import starlingEngine.elements.EngineState;
             remove(obj["target"]);
         }
 
+        private function onShowSmallScore(type:String, obj:Object):void
+        {
+            var target:BadCube = obj["target"] as BadCube;
+            var w:uint = target.width;
+            var h:uint = target.height;
+            var posX:uint = target.x;
+            var posY:uint = target.y;
+
+            trace(posX + " " + posY);
+
+            var tf:IAbstractTextField = new EngineTextField(100,100,"100", "Verdana", 20);
+            var label:IAbstractLabel;
+            label = new EngineLabel(tf);
+            label.scaleX = label.scaleY = 2;
+            label.x = 350;
+            label.y = 150;
+
+            TweenLite.to(label, 1, {y:100, alpha:0, scaleX:1, scaleY:1, rotation:.5});
+
+            this.addNewChild(label);
+         }
+
         private function onBreakObject(type:String, obj:Object):void
         {
             var target:BadCube = obj["target"] as BadCube;
@@ -286,8 +324,8 @@ import starlingEngine.elements.EngineState;
             var posX:uint = target.x;
             var posY:uint = target.y;
 
-            var pieces:uint = Math.random()*100;
-            var piecesSize:uint = (2+w/pieces)*2;
+            var pieces:uint = 20+Math.random()*80;
+            var piecesSize:uint = target.width/10;
 
             var piecesW:uint = Math.sqrt(pieces);
             var piecesH:uint = Math.sqrt(pieces);

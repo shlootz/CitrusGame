@@ -37,6 +37,7 @@ public class BulletCube extends BadCube{
         _hand.anchor2.set(_body.worldPointToLocal(mp, true));
         _hand.active = true;
 
+        _signalsManager.dispatchSignal("showSmallSCore", "showSmallSCore", {target:this});
     }
 }
 }

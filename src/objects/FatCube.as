@@ -24,6 +24,8 @@ public class FatCube extends BadCube{
         {
             _signalsManager.dispatchSignal("breakObject", "breakObject", {target:this})
         }
+
+        _signalsManager.dispatchSignal("showSmallSCore", "showSmallSCore", {target:this});
     }
 
     override public function update(timeDelta:Number):void {

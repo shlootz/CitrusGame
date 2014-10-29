@@ -48,6 +48,8 @@ public class BadCube extends DraggableCube{
         {
             _signalsManager.dispatchSignal("breakObject", "breakObject", {target:this})
         }
+
+        _signalsManager.dispatchSignal("showSmallSCore", "showSmallSCore", {target:this});
     }
 }
 }
